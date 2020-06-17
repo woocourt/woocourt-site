@@ -1,0 +1,14 @@
+
+<ag-grid-angular
+    style="width: 100%; height: 1000px;"
+    class="ag-theme-alpine"
+    [rowData]="criteria"
+    [columnDefs]="columnDefs"
+    [frameworkComponents]="frameworkComponents"
+    [rowDragManaged]="true"
+    [animateRows]="true"
+    (rowDragEnd)="onRowDragEnd($event)"
+    [defaultColDef]="defaultColDef"
+    (gridReady)="onGridReady($event)"
+    (modelUpdated)="onModelUpdated($event)">
+</ag-grid-angular>
