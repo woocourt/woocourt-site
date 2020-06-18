@@ -12,3 +12,35 @@
     (gridReady)="onGridReady($event)"
     (modelUpdated)="onModelUpdated($event)">
 </ag-grid-angular>
+<h4>Add a new criteria</h4>
+<table class="minimalistBlack mt-2">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>
+        <input type="text" class="form-control" id="step" [(ngModel)]="newCriteria.name" />
+      </td>
+      <td>
+        <input type="checkbox" class="form-control" id="value" [(ngModel)]="newCriteria.required" />
+      </td>
+      <td><button type="button" (click)="addCriteria()">Add</button></td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <!-- <tr *ngFor="let item of criteria">
+      <td>{{ item.name }}</td>
+      <td>{{ item.required }}</td>
+      <td>{{ item.display_order }}</td>
+      <td>
+        <button type="button" (click)="deleteCriteria(item.id, item.name)">Delete</button>
+        <button type="button" (click)="editCriteriaType(item.id)">Edit</button>
+      </td>
+    </tr> -->
+  </tbody>
+</table>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonRendererComponent } from 'src/app/components/grid-renderer/button-renderer.component';
 import { CheckBoxRendererComponent } from 'src/app/components/grid-renderer/checkbox-renderer.component';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { CriteriaType } from 'src/app/model/criteriaType.model';
 
 @Component({
   selector: 'app-list-criteria',
@@ -8,6 +11,9 @@ import { CheckBoxRendererComponent } from 'src/app/components/grid-renderer/chec
   styleUrls: ['./list-criteria.component.scss']
 })
 export class ListCriteriaComponent implements OnInit {
+
+  criteria: CriteriaType[]
+  newCriteria: CriteriaType = new CriteriaType()
 
   // ag-grid definitions
   private gridApi
@@ -62,12 +68,6 @@ export class ListCriteriaComponent implements OnInit {
   }
 
 
-  criteria = [
-    { name: 'criteria 1 aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaa a', required: true, display_order: 0 },
-    { name: 'criteria 2', required: false, display_order: 1 },
-    { name: 'criteria 3', required: true, display_order: 2 },
-  ];
-
   // ag grid methods
   async requiredChanged($event) {
     console.log('required changed', $event)
@@ -78,7 +78,7 @@ export class ListCriteriaComponent implements OnInit {
       display_order: $event.rowIndex,
       values: [],
     }
-    //await this.apiService.updateCriteriaType(type).toPromise()
+    await this.apiService.updateCriteriaType(type).toPromise()
   }
 
   async onBtnSaveClick($event) {
@@ -89,7 +89,7 @@ export class ListCriteriaComponent implements OnInit {
       display_order: $event.rowIndex,
       values: [],
     }
-    //await this.apiService.updateCriteriaType(type).toPromise()
+    await this.apiService.updateCriteriaType(type).toPromise()
   }
 
   onBtnDeleteClick($event) {
@@ -114,7 +114,7 @@ export class ListCriteriaComponent implements OnInit {
     })
 
     for (const criteriaType of rows) {
-      //this.apiService.updateCriteriaType(criteriaType).subscribe()
+      this.apiService.updateCriteriaType(criteriaType).subscribe()
     }
   }
 
@@ -122,45 +122,53 @@ export class ListCriteriaComponent implements OnInit {
     console.log('ready')
     this.gridApi = params.api
     this.gridColumnApi = params.columnApi
-    this.gridApi.sizeColumnsToFit()
+    this.gridApi && this.gridApi.sizeColumnsToFit()
     return
   }
 
   onModelUpdated($event) {
     console.log('updated')
-    this.gridApi.sizeColumnsToFit()
+    this.gridApi && this.gridApi.sizeColumnsToFit()
     return
   }
 
-  constructor() { }
+  constructor(private router: Router, private apiService: ApiService) {
+    this.criteria = []
+    this.newCriteria.required = false
+   }
 
   ngOnInit(): void {
+    this.apiService.getCriteriaTypes()
+    .subscribe( (data: CriteriaType[]) => {
+      this.criteria = data
+      console.log('criteria', this.criteria)
+    })
   }
 
   deleteCriteria(id: string,  name: string): void {
     if (confirm(`are you sure you want to delete ${name} and all its possible values?`)) {
-      // this.apiService.deleteCriteriaType(id)
-      //   .subscribe( _ => {
-      //     this.criteria = this.criteria.filter(s => s.id !== id)
-      //   })
+      this.apiService.deleteCriteriaType(id)
+        .subscribe( _ => {
+          this.criteria = this.criteria.filter(s => s.id !== id)
+        })
     }
   }
 
   addCriteria() {
-    // this.apiService.addCriteriaType(this.newCriteria)
-    //   .subscribe( _ => {
-    //     this.newCriteria = new CriteriaType()
-    //     this.ngOnInit()
-    //   })
+    this.apiService.addCriteriaType(this.newCriteria)
+      .subscribe( _ => {
+        this.newCriteria = new CriteriaType()
+        this.ngOnInit()
+      })
   }
 
   addCriteriaType(): void {
-    // this.router.navigate(['add-criteria'])
+    this.router.navigate(['add-criteria'])
   }
 
   editCriteriaType(id: string): void {
     window.localStorage.removeItem('criteriaTypeId')
     window.localStorage.setItem('criteriaTypeId', id)
-    // this.router.navigate(['edit-criteria'])
+    this.router.navigate(['edit-criteria'])
   }
 }
