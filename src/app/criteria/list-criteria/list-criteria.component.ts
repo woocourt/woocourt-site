@@ -166,10 +166,6 @@ export class ListCriteriaComponent implements OnInit {
       })
   }
 
-  addCriteriaType(): void {
-    this.router.navigate(['add-criteria'])
-  }
-
   editCriteriaType(id: string): void {
     window.localStorage.removeItem('criteriaTypeId')
     window.localStorage.setItem('criteriaTypeId', id)
