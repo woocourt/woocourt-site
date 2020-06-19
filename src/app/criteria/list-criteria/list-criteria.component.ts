@@ -138,6 +138,10 @@ export class ListCriteriaComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if (!window.localStorage.getItem('token')) {
+      this.router.navigate(['login'])
+      return
+    }
     this.apiService.getCriteriaTypes()
     .subscribe( (data: CriteriaType[]) => {
       this.criteria = data

@@ -10,7 +10,8 @@ import { CheckBoxRendererComponent } from './components/grid-renderer/checkbox-r
 import {ApiService} from './services/api.service'
 import {TokenInterceptor} from './core/interceptor'
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -18,13 +19,15 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ListCriteriaComponent,
     ButtonRendererComponent,
-    CheckBoxRendererComponent
+    CheckBoxRendererComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AgGridModule.withComponents([])
   ],
   providers: [ApiService, {provide: HTTP_INTERCEPTORS,
