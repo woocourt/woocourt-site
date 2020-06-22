@@ -75,18 +75,19 @@ padding-left:35px;
 width:310px;
 height:30px;
 font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
-/* For I.E */
--moz-box-shadow:0 0 10px;
-/* For Mozilla Web Browser */
-border-radius:5px;
--webkit-border-radius:5px;
+// box-shadow:0 0 10px;
+// -webkit-box-shadow:0 0 10px;
+// /* For I.E */
+// -moz-box-shadow:0 0 10px;
+// /* For Mozilla Web Browser */
+// border-radius:5px;
+// -webkit-border-radius:5px;
 /* For I.E */
 -moz-border-radius:5px
 /* For Mozilla Web Browser */
 }
-input#email{
+
+input#order{
 background-repeat:no-repeat;
 background-position:6px;
 border:1px solid #DADADA;
@@ -96,34 +97,13 @@ padding-left:35px;
 width:310px;
 height:30px;
 font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
-/* For I.E */
--moz-box-shadow:0 0 10px;
-/* For Mozilla Web Browser */
-border-radius:5px;
--webkit-border-radius:5px;
-/* For I.E */
--moz-border-radius:5px
-/* For Mozilla Web Browser */
-}
-input#contact{
-background-repeat:no-repeat;
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-box-shadow:0 0 10px;
--webkit-box-shadow:0 0 10px;
-/* For I.E */
--moz-box-shadow:0 0 10px;
-/* For Mozilla Web Browser */
-border-radius:5px;
--webkit-border-radius:5px;
+// box-shadow:0 0 10px;
+// -webkit-box-shadow:0 0 10px;
+// /* For I.E */
+// -moz-box-shadow:0 0 10px;
+// /* For Mozilla Web Browser */
+// border-radius:5px;
+// -webkit-border-radius:5px;
 /* For I.E */
 -moz-border-radius:5px
 /* For Mozilla Web Browser */
