@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'woocourt-frontend';
+  selected = 0;
+
+  onTabClick(selectedTab: number) {
+    this.selected = selectedTab
+  }
 }
