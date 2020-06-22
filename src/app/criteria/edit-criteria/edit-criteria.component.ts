@@ -68,6 +68,8 @@ export class EditCriteriaComponent implements OnInit {
   constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit() {
+    if (!window.localStorage.getItem('criteriaTypeId')) this.navigateBack()
+
     this.apiService.getCriteriaType(window.localStorage.getItem('criteriaTypeId'))
       .subscribe(data => {
         console.log('type', data)
