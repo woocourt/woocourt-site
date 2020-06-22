@@ -5,59 +5,70 @@
     <button type="button" (click)="navigateBack()">back to list</button>
   </div>
 
-  <div class="form-group">
+  <div id="first">
+    <label>Name :</label>
+    <input id="fname" placeholder="Full Name" type="text" [(ngModel)]="criteriaType.name">
+    <label>Required :</label>
+    <input id="required" placeholder="Email" type="checkbox" [(ngModel)]="criteriaType.required">
+    <label>Order :</label>
+    <input id="contact" placeholder="Contact Number" type="text" [(ngModel)]="criteriaType.display_order">
+    <input id="submit" type="submit" value="Save" (click)="updateCriteria()">
+  </div>
+
+  <!-- <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" placeholder="name" name="title" class="form-control" id="name" [(ngModel)]="criteriaType.name">
+    <input type="text" placeholder="name" name="title" class="form-control" id="name2" [(ngModel)]="criteriaType.name">
   </div>
   <div class="form-group">
     <label for="required">Required:</label>
-    <input type="checkbox" name="required" class="form-control" id="required" [(ngModel)]="criteriaType.required">
+    <input type="checkbox" name="required" class="form-control" id="required2" [(ngModel)]="criteriaType.required">
   </div>
   <div class="form-group">
     <label for="required">Order:</label>
-    <input type="number" name="order" class="form-control" id="order" [(ngModel)]="criteriaType.display_order">
+    <input type="number" name="order" class="form-control" id="order2" [(ngModel)]="criteriaType.display_order">
   </div>
-  <button class="btn btn-success" (click)="updateCriteria()">Save</button>
+  <button class="btn btn-success" (click)="updateCriteria()">Save</button> -->
   <div>
-    <h3>possible values</h3>
+    <h3>Add a new value</h3>
     <table class="minimalistBlack">
-      <thead>
-        <!-- <tr>
-          <th>step</th>
-          <th>value</th>
-          <th>actions</th>
-        </tr> -->
-      </thead>
-      <tfoot>
-        <tr>
-          <td>
-            <input type="number" class="form-control" id="step" [(ngModel)]="newValue.value" />
-          </td>
-          <td>
-            <input type="text" class="form-control" id="value" [(ngModel)]="newValue.value_display" />
-          </td>
-          <td><button type="button" (click)="addValue()">Add</button></td>
-        </tr>
-      </tfoot>
-      <tbody>
-        <!-- <tr *ngFor="let item of criteriaValues">
-          <td>
-            <input type="number" class="form-control" id="step" [(ngModel)]="item.value"
-              [disabled]="editingValue.id !== item.id" />
-          </td>
-          <td>
-            <input type="text" class="form-control" id="value" [(ngModel)]="item.value_display"
-              [disabled]="editingValue.id !== item.id" />
-          </td>
-          <td>
-            <button *ngIf="editingValue.id !== item.id" type="button" (click)="editValue(item)">Edit</button>
-            <button *ngIf="editingValue.id === item.id" type="button" (click)="cancelEditValue()">Cancel</button>
-            <button *ngIf="editingValue.id === item.id" type="button" (click)="saveEditValue()">Save</button>
-            <button type="button" class="ml-4" (click)="deleteValue(item.id)">Delete</button>
-          </td>
-        </tr> -->
-      </tbody>
-    </table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>order</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td>
+              <input type="text" class="form-control text-input" id="step" [(ngModel)]="newValue.value_display" />
+            </td>
+            <td>
+              <input type="number" class="form-control" id="value" [(ngModel)]="newValue.value" />
+            </td>
+            <td><button type="button" (click)="addValue()">Add</button></td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <!-- <tr *ngFor="let item of criteriaValues">
+            <td>
+              <input type="number" class="form-control" id="step" [(ngModel)]="item.value"
+                [disabled]="editingValue.id !== item.id" />
+            </td>
+            <td>
+              <input type="text" class="form-control" id="value" [(ngModel)]="item.value_display"
+                [disabled]="editingValue.id !== item.id" />
+            </td>
+            <td>
+              <button *ngIf="editingValue.id !== item.id" type="button" (click)="editValue(item)">Edit</button>
+              <button *ngIf="editingValue.id === item.id" type="button" (click)="cancelEditValue()">Cancel</button>
+              <button *ngIf="editingValue.id === item.id" type="button" (click)="saveEditValue()">Save</button>
+              <button type="button" class="ml-4" (click)="deleteValue(item.id)">Delete</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+      <h3>possible values</h3>
     <ag-grid-angular style="width: 100%; height: 1000px;" class="ag-theme-alpine" [rowData]="criteriaValues"
       [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" [rowDragManaged]="true" [animateRows]="true"
       (rowDragEnd)="onRowDragEnd($event)" [defaultColDef]="defaultColDef">
