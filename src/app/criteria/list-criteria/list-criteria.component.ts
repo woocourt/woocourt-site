@@ -32,31 +32,20 @@ export class ListCriteriaComponent implements OnInit {
     },
     {headerName: 'Order', field: 'display_order', suppressSizeToFit: true },
     {
-      headerName: 'Save',
+      headerName: 'Actions',
       cellRenderer: 'actionsRenderer',
       suppressSizeToFit: true,
       cellRendererParams: {
-        onClick: this.onBtnSaveClick.bind(this),
-        label: 'Save',
-      },
-    },
-    {
-      headerName: 'Delete',
-      cellRenderer: 'actionsRenderer',
-      suppressSizeToFit: true,
-      cellRendererParams: {
-        onClick: this.onBtnDeleteClick.bind(this),
-        label: 'Delete',
-      },
-    },
-    {
-      headerName: 'Edit',
-      cellRenderer: 'actionsRenderer',
-      suppressSizeToFit: true,
-      cellRendererParams: {
-        onClick: this.onBtnEditClick.bind(this),
-        label: 'Edit',
-      },
+        buttons: [{
+          onClick: this.onBtnSaveClick.bind(this),
+          label: 'Save',
+        }, {
+          onClick: this.onBtnDeleteClick.bind(this),
+          label: 'Delete',
+        }, {
+          onClick: this.onBtnEditClick.bind(this),
+          label: 'Edit',
+        }]}
     },
   ]
 
