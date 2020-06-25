@@ -1,24 +1,57 @@
-.button {
-    background-color: #FFFFFF; /* Green */
-    border: none;
-    color: #1976d2;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
+  .toolbar {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    height: 4vh;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    //padding-left: 2em;
+    display:flex;
     transition-duration: 0.4s;
   }
 
-  .button:hover {
-    background-color: #999;
-    color: white;
+  .toolbar .button {
+    padding-left: 10px;
+    padding-right: 10px;
+    display:flex;
+    align-items: center;
+    cursor: pointer;
   }
 
-  .button.active {
-    background-color: #999;
-    color: white;
+  .toolbar .button.active {
+    background-color: white;
+    color: #1976d2;
   }
+
+  .toolbar .button:hover {
+    background-color: white;
+    color: #1976d2;
+  }
+
+
+  // .button {
+  //   background-color: #FFFFFF; /* Green */
+  //   border: none;
+  //   color: #1976d2;
+  //   padding: 10px;
+  //   text-align: center;
+  //   text-decoration: none;
+  //   display: inline-block;
+  //   font-size: 16px;
+  //   margin: 4px 2px;
+  //   cursor: pointer;
+  //   border-radius: 8px;
+  //   transition-duration: 0.4s;
+  // }
+
+  // .button:hover {
+  //   background-color: #999;
+  //   color: white;
+  // }
+
+  // .button.active {
+  //   background-color: #999;
+  //   color: white;
+  // }
