@@ -6,6 +6,7 @@ import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.co
 
 
 const routes: Routes = [
+  { path: '', component: ListCriteriaComponent },
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: 'edit-criteria', component: EditCriteriaComponent },
   { path: 'login', component: LoginComponent }

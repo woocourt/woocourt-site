@@ -111,13 +111,13 @@ export class ListCriteriaComponent implements OnInit {
     console.log('ready')
     this.gridApi = params.api
     this.gridColumnApi = params.columnApi
-    this.gridApi && this.gridApi.sizeColumnsToFit()
+    if (this.gridApi) this.gridApi.sizeColumnsToFit()
     return
   }
 
   onModelUpdated($event) {
     console.log('updated')
-    this.gridApi && this.gridApi.sizeColumnsToFit()
+    if (this.gridApi) this.gridApi.sizeColumnsToFit()
     return
   }
 

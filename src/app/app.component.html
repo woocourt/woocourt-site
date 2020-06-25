@@ -1,30 +1,11 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
 <div style="padding-left: 2em; padding-right: 2em;">
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
-    <div class="button" [ngClass]="{'active': selected===0}" (click)="onTabClick(0)">Users</div>
-    <div class="button" [ngClass]="{'active': selected===1}" (click)="onTabClick(1)">Criteria</div>
-    <!-- <button class="button" [ngClass]="{'active': selected===0}" (click)="onTabClick(0)">Users</button>
-    <button class="button" [ngClass]="{'active': selected===1}" (click)="onTabClick(1)">Criteria</button> -->
+    <div class="button" [ngClass]="{'active': selected===TAB_USERS}" (click)="onTabClick(0)">Users</div>
+    <div class="button" [ngClass]="{'active': selected===TAB_CRITERIA}" (click)="onTabClick(1)">Criteria</div>
   </div>
   <div style="padding-top: 1em;" role="main">
     <router-outlet></router-outlet>
   </div>
 </div>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
