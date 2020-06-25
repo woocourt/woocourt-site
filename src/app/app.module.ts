@@ -18,6 +18,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_GB } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { ListUsersComponent } from './user/list-users/list-users.component';
 
 registerLocaleData(en);
 
@@ -29,7 +30,8 @@ registerLocaleData(en);
     ButtonRendererComponent,
     CheckBoxRendererComponent,
     LoginComponent,
-    EditCriteriaComponent
+    EditCriteriaComponent,
+    ListUsersComponent
   ],
   imports: [
     BrowserModule,

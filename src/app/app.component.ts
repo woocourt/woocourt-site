@@ -19,6 +19,7 @@ export class AppComponent {
     this.selected = selectedTab
     switch (selectedTab) {
       case this.TAB_USERS:
+        this.router.navigate(['list-users'])
         break
       case this.TAB_CRITERIA:
         this.router.navigate(['list-criteria'])
