@@ -1,31 +1,7 @@
-  <h2 class="text-center">Edit Criteria Type</h2>
+  <h2 class="text-center"><strong>{{criteriaType.name}}</strong> values</h2>
   <div>
     <a (click)="navigateBack()"><- back to list</a>
   </div>
-
-  <div id="first">
-    <label>Name :</label>
-    <input id="fname" placeholder="Full Name" type="text" [(ngModel)]="criteriaType.name">
-    <label>Required :</label>
-    <input id="required" placeholder="Email" type="checkbox" [(ngModel)]="criteriaType.required">
-    <label>Order :</label>
-    <input id="order" placeholder="" type="text" [(ngModel)]="criteriaType.display_order">
-    <input id="submit" type="submit" value="Save" (click)="updateCriteria()">
-  </div>
-
-  <!-- <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" placeholder="name" name="title" class="form-control" id="name2" [(ngModel)]="criteriaType.name">
-  </div>
-  <div class="form-group">
-    <label for="required">Required:</label>
-    <input type="checkbox" name="required" class="form-control" id="required2" [(ngModel)]="criteriaType.required">
-  </div>
-  <div class="form-group">
-    <label for="required">Order:</label>
-    <input type="number" name="order" class="form-control" id="order2" [(ngModel)]="criteriaType.display_order">
-  </div>
-  <button class="btn btn-success" (click)="updateCriteria()">Save</button> -->
   <div>
     <h3>Add a new value</h3>
     <table class="minimalistBlack">
