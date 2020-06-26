@@ -5,3 +5,19 @@
 .ag-theme-alpine {
     @include ag-theme-alpine();
 }
+
+.link-button {
+  margin-right: 1em;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #eba96b;
+  color: white;
+  transition-duration: 0.4s;
+  transition-property: background-color;
+}
+.link-button:hover {
+  background-color: #fa8d27;
+  text-decoration: none;
+  color: white;
+}

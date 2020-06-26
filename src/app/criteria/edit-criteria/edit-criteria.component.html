@@ -1,9 +1,24 @@
   <h2 class="text-center"><strong>{{criteriaType.name}}</strong> values</h2>
-  <div>
-    <a (click)="navigateBack()"><- back to list</a>
+  <div style="padding: 0 0 1em 0;">
+    <a class="link-button" (click)="navigateBack()">
+      <i class="glyphicon glyphicon-chevron-left mr-5"></i>
+      back to list
+    </a>
+
   </div>
   <div>
-    <h3>Add a new value</h3>
+    <ag-grid-angular
+      style="width: 100%; height: 1000px;"
+      class="ag-theme-alpine"
+      [rowData]="criteriaValues"
+      [columnDefs]="columnDefs"
+      [frameworkComponents]="frameworkComponents"
+      [rowDragManaged]="true"
+      [animateRows]="true"
+      (rowDragEnd)="onRowDragEnd($event)"
+      [defaultColDef]="defaultColDef">
+    </ag-grid-angular>
+    <h4>Add a new value</h4>
     <table class="minimalistBlack">
         <thead>
           <tr>
@@ -24,26 +39,5 @@
           </tr>
         </tfoot>
         <tbody>
-          <!-- <tr *ngFor="let item of criteriaValues">
-            <td>
-              <input type="number" class="form-control" id="step" [(ngModel)]="item.value"
-                [disabled]="editingValue.id !== item.id" />
-            </td>
-            <td>
-              <input type="text" class="form-control" id="value" [(ngModel)]="item.value_display"
-                [disabled]="editingValue.id !== item.id" />
-            </td>
-            <td>
-              <button *ngIf="editingValue.id !== item.id" type="button" (click)="editValue(item)">Edit</button>
-              <button *ngIf="editingValue.id === item.id" type="button" (click)="cancelEditValue()">Cancel</button>
-              <button *ngIf="editingValue.id === item.id" type="button" (click)="saveEditValue()">Save</button>
-              <button type="button" class="ml-4" (click)="deleteValue(item.id)">Delete</button>
-            </td>
-          </tr> -->
         </tbody>
       </table>
-      <h3>possible values</h3>
-    <ag-grid-angular style="width: 100%; height: 1000px;" class="ag-theme-alpine" [rowData]="criteriaValues"
-      [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" [rowDragManaged]="true" [animateRows]="true"
-      (rowDragEnd)="onRowDragEnd($event)" [defaultColDef]="defaultColDef">
-    </ag-grid-angular>

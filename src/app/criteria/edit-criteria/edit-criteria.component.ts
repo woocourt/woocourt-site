@@ -29,8 +29,10 @@ export class EditCriteriaComponent implements OnInit {
       headerName: 'Delete',
       cellRenderer: 'actionsRenderer',
       cellRendererParams: {
+        buttons: [{
         onClick: this.onBtnDeleteClick.bind(this),
         label: 'Delete',
+      }]
       },
     },
   ]
