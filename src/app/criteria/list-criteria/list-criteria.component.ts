@@ -4,6 +4,7 @@ import { CheckBoxRendererComponent } from 'src/app/components/grid-renderer/chec
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CriteriaType } from 'src/app/model/criteriaType.model';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-list-criteria',
@@ -102,9 +103,21 @@ export class ListCriteriaComponent implements OnInit {
       }
     })
 
+    const rowUpdates: Observable<any>[] = []
+    this.gridApi.showLoadingOverlay();
     for (const criteriaType of rows) {
-      this.apiService.updateCriteriaType(criteriaType).subscribe()
+      rowUpdates.push(this.apiService.updateCriteriaType(criteriaType))
     }
+    forkJoin(rowUpdates).subscribe({
+      next: () => {
+        console.log('updates finished')
+        this.apiService.getCriteriaTypes()
+        .subscribe( (data: CriteriaType[]) => {
+          this.criteria = data
+          console.log('criteria', this.criteria)
+        })
+      }
+    })
   }
 
   onGridReady(params) {

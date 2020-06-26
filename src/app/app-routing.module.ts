@@ -7,7 +7,7 @@ import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.co
 
 
 const routes: Routes = [
-  { path: '', component: ListCriteriaComponent },
+  { path: '', component: ListUsersComponent },
   { path: 'list-users', component: ListUsersComponent },
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: 'edit-criteria', component: EditCriteriaComponent },

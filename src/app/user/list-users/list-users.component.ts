@@ -1,6 +1,6 @@
-import { Component, OnInit , Inject} from '@angular/core'
-import {Router} from '@angular/router'
-import {User} from '../../model/user.model'
+import { Component, OnInit, Inject } from '@angular/core'
+import { Router } from '@angular/router'
+import { User } from '../../model/user.model'
 import { ApiService } from 'src/app/services/api.service'
 
 
@@ -13,7 +13,7 @@ export class ListUsersComponent implements OnInit {
 
   constructor(private router: Router, private apiService: ApiService) {
     this.users = []
-   }
+  }
 
   users: User[]
   newUser: User = new User()
@@ -24,23 +24,23 @@ export class ListUsersComponent implements OnInit {
       return
     }
     this.apiService.getAllUsers()
-      .subscribe( (data: User[]) => {
+      .subscribe((data: User[]) => {
         this.users = data
       })
   }
 
-  deleteUser(id: string,  name: string): void {
+  deleteUser(id: string, name: string): void {
     if (confirm(`are you sure you want to delete ${name} and all its possible values?`)) {
-    this.apiService.deleteUser(id)
-      .subscribe( _ => {
-        this.users = this.users.filter(u => u.id !== id)
-      })
+      this.apiService.deleteUser(id)
+        .subscribe(_ => {
+          this.users = this.users.filter(u => u.id !== id)
+        })
     }
   }
 
   addUser(): void {
     this.apiService.addUser(this.newUser)
-      .subscribe( _ => {
+      .subscribe(_ => {
         this.newUser = new User()
         this.ngOnInit()
       })
