@@ -1,3 +1,4 @@
+import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ButtonRendererComponent } from 'src/app/components/grid-renderer/button-renderer.component';
 import { CheckBoxRendererComponent } from 'src/app/components/grid-renderer/checkbox-renderer.component';
@@ -21,10 +22,15 @@ export class ListCriteriaComponent implements OnInit {
   private gridColumnApi
 
   columnDefs = [
-    {headerName: 'Name', field: 'name', rowDrag: true, editable: true},
-    {headerName:
-      'Required', field:
-      'required',
+    {
+      headerName: 'Name',
+      field: 'name',
+      rowDrag: true,
+      onCellValueChanged: this.onCellNameChanged.bind(this),
+      editable: true},
+    {
+      headerName: 'Required',
+      field: 'required',
       suppressSizeToFit: true,
       cellRenderer: 'checkboxRenderer',
       cellRendererParams: {
@@ -38,9 +44,6 @@ export class ListCriteriaComponent implements OnInit {
       suppressSizeToFit: true,
       cellRendererParams: {
         buttons: [{
-          onClick: this.onBtnSaveClick.bind(this),
-          label: 'Save',
-        }, {
           onClick: this.onBtnDeleteClick.bind(this),
           label: 'Delete',
         }, {
@@ -57,10 +60,15 @@ export class ListCriteriaComponent implements OnInit {
     checkboxRenderer: CheckBoxRendererComponent,
   }
 
+  async onCellNameChanged($event) {
+    await this.apiService.updateCriteriaType({
+      ...$event.data,
+      values: [],
+    }).toPromise()
+  }
 
   // ag grid methods
   async requiredChanged($event) {
-    console.log('required changed', $event)
     const type = {
       id: $event.rowData.id,
       name: $event.rowData.name,
@@ -71,16 +79,16 @@ export class ListCriteriaComponent implements OnInit {
     await this.apiService.updateCriteriaType(type).toPromise()
   }
 
-  async onBtnSaveClick($event) {
-    const type = {
-      id: $event.rowData.id,
-      name: $event.rowData.name,
-      required: $event.rowData.required,
-      display_order: $event.rowIndex,
-      values: [],
-    }
-    await this.apiService.updateCriteriaType(type).toPromise()
-  }
+  // async onBtnSaveClick($event) {
+  //   const type = {
+  //     id: $event.rowData.id,
+  //     name: $event.rowData.name,
+  //     required: $event.rowData.required,
+  //     display_order: $event.rowIndex,
+  //     values: [],
+  //   }
+  //   await this.apiService.updateCriteriaType(type).toPromise()
+  // }
 
   onBtnDeleteClick($event) {
     const {id, name} = $event.rowData
