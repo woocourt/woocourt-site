@@ -5,7 +5,24 @@ import { ICellRendererAngularComp } from 'ag-grid-angular'
 @Component({
   selector: 'app-button-renderer',
   template: `
-    <a style="margin-right: 1em;" *ngFor="let action of params.buttons" (click)="onClick($event, action.onClick)">{{action.label}}</a>
+    <style>
+      .grid-button {
+        margin-right: 1em;
+        padding: 3px 10px 3px 10px;
+        text-decoration: none;
+        border-radius: 8px;
+        background-color: #67a0d8;
+        color: white;
+        transition-duration: 0.4s;
+        transition-property: background-color;
+      }
+      .grid-button:hover {
+        background-color: #1976d2;
+      }
+    </style>
+    <div class="button-container">
+      <a class="grid-button" *ngFor="let button of params.buttons" (click)="onClick($event, button.onClick)">{{button.label}}</a>
+    </div>
     `,
 })
 

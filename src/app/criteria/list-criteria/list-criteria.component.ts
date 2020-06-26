@@ -48,7 +48,7 @@ export class ListCriteriaComponent implements OnInit {
           label: 'Delete',
         }, {
           onClick: this.onBtnEditClick.bind(this),
-          label: 'Values',
+          label: 'Edit Values',
         }]}
     },
   ]
