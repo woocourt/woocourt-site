@@ -1,3 +1,4 @@
+import { SelectRendererComponent } from 'src/app/components/grid-renderer/select-renderer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -29,6 +30,7 @@ registerLocaleData(en);
     ListCriteriaComponent,
     ButtonRendererComponent,
     CheckBoxRendererComponent,
+    SelectRendererComponent,
     LoginComponent,
     EditCriteriaComponent,
     ListUsersComponent

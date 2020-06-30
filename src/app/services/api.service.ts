@@ -21,6 +21,10 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/criteria`)
   }
 
+  getCriteriaDataTypes(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/criteria/dataTypes`)
+  }
+
   getCriteriaType(id: string): Observable<CriteriaType> {
     return this.http.get<any>(`${this.baseUrl}/criteria/${id}`)
   }

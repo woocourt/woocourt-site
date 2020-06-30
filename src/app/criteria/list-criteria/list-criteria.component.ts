@@ -1,7 +1,9 @@
+import { CriteriaDataType } from './../../model/criteriaDataType.model';
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ButtonRendererComponent } from 'src/app/components/grid-renderer/button-renderer.component';
 import { CheckBoxRendererComponent } from 'src/app/components/grid-renderer/checkbox-renderer.component';
+import { SelectRendererComponent } from 'src/app/components/grid-renderer/select-renderer.component';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CriteriaType } from 'src/app/model/criteriaType.model';
@@ -16,48 +18,69 @@ export class ListCriteriaComponent implements OnInit {
 
   criteria: CriteriaType[]
   newCriteria: CriteriaType = new CriteriaType()
+  dataTypes = []
+
 
   // ag-grid definitions
   private gridApi
   private gridColumnApi
 
-  columnDefs = [
-    {
-      headerName: 'Name',
-      field: 'name',
-      rowDrag: true,
-      onCellValueChanged: this.onCellNameChanged.bind(this),
-      editable: true},
-    {
-      headerName: 'Required',
-      field: 'required',
-      suppressSizeToFit: true,
-      cellRenderer: 'checkboxRenderer',
-      cellRendererParams: {
-        onChange: this.requiredChanged.bind(this),
-      },
-    },
-    {headerName: 'Order', field: 'display_order', suppressSizeToFit: true },
-    {
-      headerName: 'Actions',
-      cellRenderer: 'actionsRenderer',
-      suppressSizeToFit: true,
-      cellRendererParams: {
-        buttons: [{
-          onClick: this.onBtnDeleteClick.bind(this),
-          label: 'Delete',
-        }, {
-          onClick: this.onBtnEditClick.bind(this),
-          label: 'Edit Values',
-        }]}
-    },
-  ]
+  columnDefs = []
+
+  // columnDefs = [
+  //   {
+  //     headerName: 'Name',
+  //     field: 'name',
+  //     rowDrag: true,
+  //     onCellValueChanged: this.onCellNameChanged.bind(this),
+  //     editable: true
+  //   },
+  //   {
+  //     headerName: 'Required',
+  //     field: 'required',
+  //     suppressSizeToFit: true,
+  //     cellRenderer: 'checkboxRenderer',
+  //     cellRendererParams: {
+  //       onChange: this.requiredChanged.bind(this),
+  //     },
+  //   },
+  //   {
+  //     headerName: 'Data Type',
+  //     field: 'data_type',
+  //     suppressSizeToFit: true,
+  //     cellRenderer: 'selectRenderer',
+  //     cellRendererParams: {
+  //       onChange: this.typeChanged.bind(this),
+  //       options: this.dataTypes.map(x => {
+  //         return {
+  //           value: x.id,
+  //           name: x.name,
+  //         }
+  //       })
+  //     },
+  //   },
+  //   {headerName: 'Order', field: 'display_order', suppressSizeToFit: true },
+  //   {
+  //     headerName: 'Actions',
+  //     cellRenderer: 'actionsRenderer',
+  //     suppressSizeToFit: true,
+  //     cellRendererParams: {
+  //       buttons: [{
+  //         onClick: this.onBtnDeleteClick.bind(this),
+  //         label: 'Delete',
+  //       }, {
+  //         onClick: this.onBtnEditClick.bind(this),
+  //         label: 'Edit Values',
+  //       }]}
+  //   },
+  // ]
 
   defaultColDef = { resizable: true }
 
   frameworkComponents = {
     actionsRenderer: ButtonRendererComponent,
     checkboxRenderer: CheckBoxRendererComponent,
+    selectRenderer: SelectRendererComponent
   }
 
   async onCellNameChanged($event) {
@@ -74,21 +97,24 @@ export class ListCriteriaComponent implements OnInit {
       name: $event.rowData.name,
       required: $event.checked,
       display_order: $event.rowIndex,
+      data_type: $event.rowData.data_type,
       values: [],
     }
     await this.apiService.updateCriteriaType(type).toPromise()
   }
 
-  // async onBtnSaveClick($event) {
-  //   const type = {
-  //     id: $event.rowData.id,
-  //     name: $event.rowData.name,
-  //     required: $event.rowData.required,
-  //     display_order: $event.rowIndex,
-  //     values: [],
-  //   }
-  //   await this.apiService.updateCriteriaType(type).toPromise()
-  // }
+  async typeChanged($event) {
+    // console.log('type changed', $event, 'type selected', this.dataTypes[$event.selectedIndex])
+    const type = {
+      id: $event.rowData.id,
+      name: $event.rowData.name,
+      required: $event.rowData.required,
+      display_order: $event.rowIndex,
+      data_type: this.dataTypes[$event.selectedIndex].value,
+      values: [],
+    }
+    await this.apiService.updateCriteriaType(type).toPromise()
+  }
 
   onBtnDeleteClick($event) {
     const {id, name} = $event.rowData
@@ -118,11 +144,10 @@ export class ListCriteriaComponent implements OnInit {
     }
     forkJoin(rowUpdates).subscribe({
       next: () => {
-        console.log('updates finished')
         this.apiService.getCriteriaTypes()
         .subscribe( (data: CriteriaType[]) => {
           this.criteria = data
-          console.log('criteria', this.criteria)
+          // console.log('criteria', this.criteria)
         })
       }
     })
@@ -147,17 +172,67 @@ export class ListCriteriaComponent implements OnInit {
     this.newCriteria.required = false
    }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     if (!window.localStorage.getItem('token')) {
       this.router.navigate(['login'])
       return
     }
     this.apiService.getCriteriaTypes()
-    .subscribe( (data: CriteriaType[]) => {
-      this.criteria = data
-      console.log('criteria', this.criteria)
+      .subscribe( (data: CriteriaType[]) => {
+        this.criteria = data
+        // console.log('criteria', this.criteria)
+      })
+
+    const rawTypes = await this.apiService.getCriteriaDataTypes().toPromise();
+    this.dataTypes = rawTypes.map(x => {
+      return {
+        value: x.id,
+        name: x.name,
+      }
     })
-  }
+    this.columnDefs = [
+      {
+        headerName: 'Name',
+        field: 'name',
+        rowDrag: true,
+        onCellValueChanged: this.onCellNameChanged.bind(this),
+        editable: true
+      },
+      {
+        headerName: 'Required',
+        field: 'required',
+        suppressSizeToFit: true,
+        cellRenderer: 'checkboxRenderer',
+        cellRendererParams: {
+          onChange: this.requiredChanged.bind(this),
+        },
+      },
+      {
+        headerName: 'Data Type',
+        field: 'data_type',
+        suppressSizeToFit: true,
+        cellRenderer: 'selectRenderer',
+        cellRendererParams: {
+          onChange: this.typeChanged.bind(this),
+          options: this.dataTypes,
+        },
+      },
+      {headerName: 'Order', field: 'display_order', suppressSizeToFit: true },
+      {
+        headerName: 'Actions',
+        cellRenderer: 'actionsRenderer',
+        suppressSizeToFit: true,
+        cellRendererParams: {
+          buttons: [{
+            onClick: this.onBtnDeleteClick.bind(this),
+            label: 'Delete',
+          }, {
+            onClick: this.onBtnEditClick.bind(this),
+            label: 'Edit Values',
+          }]}
+      },
+    ]
+}
 
   deleteCriteria(id: string,  name: string): void {
     if (confirm(`are you sure you want to delete ${name} and all its possible values?`)) {

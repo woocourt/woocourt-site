@@ -5,5 +5,6 @@ export class CriteriaType {
   name: string
   required: boolean
   display_order: number
+  data_type: string
   values: CriteriaValue[]
 }
