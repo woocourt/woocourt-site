@@ -13,7 +13,12 @@ export class AppComponent {
   TAB_CRITERIA = 1
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    const url = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+    if (url.indexOf('list-criteria') >= 0 ) {
+      this.selected = this.TAB_CRITERIA
+    }
+  }
 
   onTabClick(selectedTab: number) {
     this.selected = selectedTab

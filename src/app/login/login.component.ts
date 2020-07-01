@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     .subscribe(data => {
       if (data.token !== '') {
         window.localStorage.setItem('token', data.token)
-        this.router.navigate(['list-criteria'])
+        this.router.navigate(['list-users'])
       } else {
        this.invalidLogin = true
       }
