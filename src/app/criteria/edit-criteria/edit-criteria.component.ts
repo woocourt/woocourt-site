@@ -131,7 +131,7 @@ export class EditCriteriaComponent implements OnInit {
     this.apiService.getCriteriaValues(window.localStorage.getItem('criteriaTypeId'))
       .subscribe((data: CriteriaValue[]) => {
         this.criteriaValues = data
-        console.log('criteria values', this.criteriaValues)
+        // console.log('criteria values', this.criteriaValues)
       })
   }
 

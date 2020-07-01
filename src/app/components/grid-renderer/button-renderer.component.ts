@@ -19,9 +19,17 @@ import { ICellRendererAngularComp } from 'ag-grid-angular'
       .grid-button:hover {
         background-color: #1976d2;
       }
+      .grid-button-disabled {
+        display:none;
+      }
     </style>
     <div class="button-container">
-      <a class="grid-button" *ngFor="let button of params.buttons" (click)="onClick($event, button.onClick)">{{button.label}}</a>
+      <a
+        *ngFor="let button of params.buttons"
+        class="grid-button"
+        [ngClass]="{'grid-button-disabled': button.disabledDataTypes && button.disabledDataTypes.includes(data_type) }"
+        (click)="onClick($event, button.onClick)">{{button.label}}
+      </a>
     </div>
     `,
 })
@@ -30,9 +38,11 @@ export class ButtonRendererComponent implements ICellRendererAngularComp {
 
   params
   label: string
+  data_type: string
 
   agInit(params): void {
     this.params = params
+    this.data_type = params.value
   }
 
   refresh(params?: any): boolean {

@@ -70,7 +70,7 @@ export class SelectRendererComponent implements ICellRendererAngularComp {
   value: boolean
 
   agInit(params): void {
-    //console.log('init select renderer', params)
+    // console.log('init select renderer', params)
     this.params = params
     this.value = params.value
   }
@@ -80,7 +80,7 @@ export class SelectRendererComponent implements ICellRendererAngularComp {
   }
 
   onOptionsSelected($event) {
-    //console.log('event', $event.target.selectedIndex, 'params', this.params)
+    // console.log('event', $event.target.selectedIndex, 'params', this.params)
     if (this.params.onChange instanceof Function) {
       // put anything into params u want pass into parents component
       const params = {
