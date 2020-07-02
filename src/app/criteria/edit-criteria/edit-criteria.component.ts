@@ -1,9 +1,11 @@
+import { CriteriaValue } from './../../model/criteriaValue.model';
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { CriteriaType } from 'src/app/model/criteriaType.model'
-import { CriteriaValue } from 'src/app/model/criteriaValue.model'
 import { ButtonRendererComponent } from 'src/app/components/grid-renderer/button-renderer.component';
 import { ApiService } from 'src/app/services/api.service'
+import { ModalService } from 'src/app/_modal';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-edit-criteria',
@@ -18,6 +20,8 @@ export class EditCriteriaComponent implements OnInit {
   editingValue: CriteriaValue = new CriteriaValue()
   private gridApi
   private gridColumnApi
+  modalId = 'values-modal'
+  bulkValues = ''
 
   // ag-grid definitions
   columnDefs = [
@@ -26,13 +30,13 @@ export class EditCriteriaComponent implements OnInit {
     { headerName: 'Order', field: 'value' },
 
     {
-      headerName: 'Delete',
+      headerName: 'Actions',
       cellRenderer: 'actionsRenderer',
       cellRendererParams: {
         buttons: [{
-        onClick: this.onBtnDeleteClick.bind(this),
-        label: 'Delete',
-      }]
+          onClick: this.onBtnDeleteClick.bind(this),
+          label: 'Delete',
+        }]
       },
     },
   ]
@@ -44,7 +48,7 @@ export class EditCriteriaComponent implements OnInit {
   defaultColDef = { resizable: true }
 
   onBtnDeleteClick($event) {
-    const {id, name} = $event.rowData
+    const { id, name } = $event.rowData
     this.deleteValue(id)
   }
 
@@ -61,13 +65,29 @@ export class EditCriteriaComponent implements OnInit {
     for (const criteriaValue of rows) {
       this.apiService.updateCriteriaValue(window.localStorage.getItem('criteriaTypeId'), criteriaValue).toPromise()
     }
-    this.update()
+
+    const rowUpdates: Observable<any>[] = []
+    if (this.gridApi) this.gridApi.showLoadingOverlay();
+    for (const criteriaValue of rows) {
+      rowUpdates.push(this.apiService.updateCriteriaValue(window.localStorage.getItem('criteriaTypeId'), criteriaValue))
+    }
+    forkJoin(rowUpdates).subscribe({
+      next: () => {
+        this.update()
+      }
+    })
   }
 
+  onGridReady(params) {
+    this.gridApi = params.api
+    this.gridColumnApi = params.columnApi
+    if (this.gridApi) this.gridApi.sizeColumnsToFit()
+    return
+  }
   // ag-grid definitions
 
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService, private modalService: ModalService) { }
 
   ngOnInit() {
     if (!window.localStorage.getItem('criteriaTypeId')) this.navigateBack()
@@ -78,6 +98,40 @@ export class EditCriteriaComponent implements OnInit {
         this.criteriaType = data
       })
     this.update()
+  }
+
+  openModal() {
+    this.modalService.open(this.modalId);
+  }
+
+  closeModal() {
+    this.modalService.close(this.modalId);
+  }
+
+  importValues() {
+    console.log('import', this.bulkValues.trim().split('\n'))
+
+    const rowUpdates: Observable<any>[] = []
+    let i = 0;
+    for (const value of this.bulkValues.trim().split('\n')) {
+      const newValue = new CriteriaValue()
+      newValue.value = i
+      newValue.value_display = value
+
+      rowUpdates.push(this.apiService.addCriteriaValue(
+        window.localStorage.getItem('criteriaTypeId'),
+        newValue
+        ))
+      i++
+    }
+
+    forkJoin(rowUpdates).subscribe({
+      next: () => {
+        console.log('finished saving')
+        this.update()
+        this.closeModal()
+      }
+    })
   }
 
   addValue() {

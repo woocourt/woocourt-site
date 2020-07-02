@@ -20,6 +20,7 @@ import { en_GB } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ListUsersComponent } from './user/list-users/list-users.component';
+import { ModalModule } from './_modal';
 
 registerLocaleData(en);
 
@@ -40,6 +41,7 @@ registerLocaleData(en);
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ModalModule,
     ReactiveFormsModule,
     AgGridModule.withComponents([]),
     BrowserAnimationsModule

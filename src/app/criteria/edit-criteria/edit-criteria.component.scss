@@ -1,143 +1,154 @@
 .character-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
-
-  table.minimalistBlack {
-    border: 3px solid #000000;
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-  }
-  table.minimalistBlack td, table.minimalistBlack th {
-    border: 1px solid #000000;
-    padding: 5px 4px;
-  }
-  table.minimalistBlack tbody td {
-    font-size: 13px;
-  }
-  table.minimalistBlack thead {
-    background: #CFCFCF;
-    background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-    background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-    background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-    border-bottom: 3px solid #000000;
-  }
-  table.minimalistBlack thead th {
-    font-size: 15px;
-    font-weight: bold;
-    color: #000000;
-    text-align: left;
-  }
-  table.minimalistBlack tfoot {
-    font-size: 14px;
-    font-weight: bold;
-    color: #000000;
-    border-top: 3px solid #000000;
-  }
-  table.minimalistBlack tfoot td {
-    font-size: 14px;
-  }
-  table .text-input {
-    width: 90%;
-  }
-
-
-  @import "http://fonts.googleapis.com/css?family=Raleway";
-body{
-font-family:'Raleway',sans-serif
-}
-img#logo{
-margin-left:90px
-}
-div#first{
-width:350px;
-height:auto;
-margin:5px 0 0;
-padding:5px;
-//background-color:#EEE;
-color:#333;
-//border:2px solid #C2D6FF;
-border-radius:40px 0 40px 0
-}
-label{
-font-size:15px;
-font-weight:700
-}
-input#fname{
-background-repeat:no-repeat;
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-// box-shadow:0 0 10px;
-// -webkit-box-shadow:0 0 10px;
-// /* For I.E */
-// -moz-box-shadow:0 0 10px;
-// /* For Mozilla Web Browser */
-// border-radius:5px;
-// -webkit-border-radius:5px;
-/* For I.E */
--moz-border-radius:5px
-/* For Mozilla Web Browser */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
-input#order{
-background-repeat:no-repeat;
-background-position:6px;
-border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-// box-shadow:0 0 10px;
-// -webkit-box-shadow:0 0 10px;
-// /* For I.E */
-// -moz-box-shadow:0 0 10px;
-// /* For Mozilla Web Browser */
-// border-radius:5px;
-// -webkit-border-radius:5px;
-/* For I.E */
--moz-border-radius:5px
-/* For Mozilla Web Browser */
+table.minimalistBlack {
+  border: 3px solid #000000;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
 }
-input#required{
-background-repeat:no-repeat;
-background-position:6px;
-//border:1px solid #DADADA;
-margin-top:10px;
-margin-bottom:10px;
-padding-left:35px;
-width:310px;
-height:30px;
-font-size:14px;
-//box-shadow:0 0 10px;
-// -webkit-box-shadow:0 0 10px;
-// /* For I.E */
-// -moz-box-shadow:0 0 10px;
-// /* For Mozilla Web Browser */
-// border-radius:5px;
-// -webkit-border-radius:5px;
-// /* For I.E */
-// -moz-border-radius:5px
-/* For Mozilla Web Browser */
+table.minimalistBlack td,
+table.minimalistBlack th {
+  border: 1px solid #000000;
+  padding: 5px 4px;
+}
+table.minimalistBlack tbody td {
+  font-size: 13px;
+}
+table.minimalistBlack thead {
+  background: #cfcfcf;
+  background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #cfcfcf 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #dbdbdb 0%,
+    #d3d3d3 66%,
+    #cfcfcf 100%
+  );
+  background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #cfcfcf 100%);
+  border-bottom: 3px solid #000000;
+}
+table.minimalistBlack thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+}
+table.minimalistBlack tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  border-top: 3px solid #000000;
+}
+table.minimalistBlack tfoot td {
+  font-size: 14px;
+}
+table .text-input {
+  width: 90%;
+}
+
+@import "http://fonts.googleapis.com/css?family=Raleway";
+body {
+  font-family: "Raleway", sans-serif;
+}
+img#logo {
+  margin-left: 90px;
+}
+div#first {
+  width: 350px;
+  height: auto;
+  margin: 5px 0 0;
+  padding: 5px;
+  //background-color:#EEE;
+  color: #333;
+  //border:2px solid #C2D6FF;
+  border-radius: 40px 0 40px 0;
+}
+label {
+  font-size: 15px;
+  font-weight: 700;
+}
+input#fname {
+  background-repeat: no-repeat;
+  background-position: 6px;
+  border: 1px solid #dadada;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 35px;
+  width: 310px;
+  height: 30px;
+  font-size: 14px;
+  // box-shadow:0 0 10px;
+  // -webkit-box-shadow:0 0 10px;
+  // /* For I.E */
+  // -moz-box-shadow:0 0 10px;
+  // /* For Mozilla Web Browser */
+  // border-radius:5px;
+  // -webkit-border-radius:5px;
+  /* For I.E */
+  -moz-border-radius: 5px;
+  /* For Mozilla Web Browser */
+}
+
+input#order {
+  background-repeat: no-repeat;
+  background-position: 6px;
+  border: 1px solid #dadada;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 35px;
+  width: 310px;
+  height: 30px;
+  font-size: 14px;
+  // box-shadow:0 0 10px;
+  // -webkit-box-shadow:0 0 10px;
+  // /* For I.E */
+  // -moz-box-shadow:0 0 10px;
+  // /* For Mozilla Web Browser */
+  // border-radius:5px;
+  // -webkit-border-radius:5px;
+  /* For I.E */
+  -moz-border-radius: 5px;
+  /* For Mozilla Web Browser */
+}
+input#required {
+  background-repeat: no-repeat;
+  background-position: 6px;
+  //border:1px solid #DADADA;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 35px;
+  width: 310px;
+  height: 30px;
+  font-size: 14px;
+  //box-shadow:0 0 10px;
+  // -webkit-box-shadow:0 0 10px;
+  // /* For I.E */
+  // -moz-box-shadow:0 0 10px;
+  // /* For Mozilla Web Browser */
+  // border-radius:5px;
+  // -webkit-border-radius:5px;
+  // /* For I.E */
+  // -moz-border-radius:5px
+  /* For Mozilla Web Browser */
 }
 input#submit {
-background-color:#cc7a66;
-border-radius:5px;
-border:none;
-padding:10px 25px;
-color:#FFF;
-text-shadow:1px 1px 1px #949494;
-margin-left:120px
+  background-color: #cc7a66;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 25px;
+  color: #fff;
+  text-shadow: 1px 1px 1px #949494;
+  margin-left: 120px;
 }
-input#submit:hover{
-background-color:#FF9980
+input#submit:hover {
+  background-color: #ff9980;
+}
+
+.bulk-import-text {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 1em;
 }

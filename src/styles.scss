@@ -7,6 +7,11 @@
 }
 
 .link-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.link-button a {
   margin-right: 1em;
   padding: 10px 10px 10px 10px;
   text-decoration: none;
@@ -16,8 +21,35 @@
   transition-duration: 0.4s;
   transition-property: background-color;
 }
-.link-button:hover {
+.link-button a:hover {
   background-color: #fa8d27;
   text-decoration: none;
   color: white;
+}
+
+.action-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.action-button a {
+  margin-right: 1em;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #67a0d8;
+  color: white;
+  transition-duration: 0.4s;
+  transition-property: background-color;
+}
+.action-button a:hover {
+  background-color: #1976d2;
+  text-decoration: none;
+  color: white;
+}
+
+
+.link-button-container {
+  display: flex;
+  flex-direction: row;
 }
