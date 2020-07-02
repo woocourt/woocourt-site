@@ -49,6 +49,10 @@ export class ApiService {
     return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/value/delete/${valueId}`)
   }
 
+  deleteAllCriteriaValues(criteriaId: string) {
+    return this.http.delete<ApiResponse>(`${this.baseUrl}/criteria/deleteAllValues/${criteriaId}`)
+  }
+
   updateCriteriaValue(criteriaTypeId: string, criteriaValue: CriteriaValue) {
     return this.http.put<ApiResponse>(`${this.baseUrl}/criteria/value/update/${criteriaTypeId}`, criteriaValue)
   }

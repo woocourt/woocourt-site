@@ -108,8 +108,11 @@ export class EditCriteriaComponent implements OnInit {
     this.modalService.close(this.modalId);
   }
 
-  importValues() {
+  async importValues() {
+    const criteriaId = window.localStorage.getItem('criteriaTypeId')
     console.log('import', this.bulkValues.trim().split('\n'))
+
+    await this.apiService.deleteAllCriteriaValues(criteriaId).toPromise()
 
     const rowUpdates: Observable<any>[] = []
     let i = 0;
@@ -118,16 +121,14 @@ export class EditCriteriaComponent implements OnInit {
       newValue.value = i
       newValue.value_display = value
 
-      rowUpdates.push(this.apiService.addCriteriaValue(
-        window.localStorage.getItem('criteriaTypeId'),
-        newValue
-        ))
+      rowUpdates.push(this.apiService.addCriteriaValue(criteriaId, newValue))
       i++
     }
 
     forkJoin(rowUpdates).subscribe({
       next: () => {
         console.log('finished saving')
+        this.bulkValues = ''
         this.update()
         this.closeModal()
       }
