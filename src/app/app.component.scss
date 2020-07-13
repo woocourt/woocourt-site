@@ -1,10 +1,12 @@
+@import "../variables.scss";
+
   .toolbar {
     // position: absolute;
     // top: 0;
     // left: 0;
     // right: 0;
     height: 4vh;
-    background-color: #67a0d8;
+    background-color: $blue-light;
     color: white;
     font-weight: 600;
     //padding-left: 2em;
@@ -23,19 +25,19 @@
 
   .toolbar .button.active {
     background-color: white;
-    color: #1976d2;
+    color: $blue-dark;
   }
 
   .toolbar .button:hover {
     background-color: white;
-    color: #1976d2;
+    color: $blue-dark;
   }
 
   .main-container {
     padding-left: 2em;
     padding-right: 2em;
     padding-bottom: 1em;
-    background-color: #67a0d8;
+    background-color: $blue-light;
   }
 
   .main-container .content {

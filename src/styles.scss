@@ -2,54 +2,59 @@
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
 
+@import "./variables.scss";
+
 .ag-theme-alpine {
     @include ag-theme-alpine();
 }
 
-.link-button {
-  padding-top: 10px;
-  padding-bottom: 10px;
+html {
+  font-size: 10px;
 }
 
-.link-button a {
-  margin-right: 1em;
-  padding: 10px 10px 10px 10px;
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.link-button {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: .5rem 1rem .5rem 1rem;
   text-decoration: none;
-  border-radius: 10px;
-  background-color: #eba96b;
+  border-radius: 1rem;
+  background-color: $orange-light;
   color: white;
-  transition-duration: 0.4s;
+  transition-duration: 0.2s;
   transition-property: background-color;
 }
-.link-button a:hover {
-  background-color: #fa8d27;
+.link-button:hover {
+  background-color: $orange-dark;
   text-decoration: none;
   color: white;
 }
 
 .action-button {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.action-button a {
+  display: inline-block;
   margin-right: 1em;
-  padding: 10px 10px 10px 10px;
+  padding: .5rem 1rem .5rem 1rem;
   text-decoration: none;
-  border-radius: 10px;
-  background-color: #67a0d8;
+  border-radius: 1rem;
+  background-color: $blue-light;
   color: white;
   transition-duration: 0.4s;
   transition-property: background-color;
 }
-.action-button a:hover {
-  background-color: #1976d2;
+.action-button:hover {
+  background-color: $blue-light;
   text-decoration: none;
   color: white;
 }
 
-
-.link-button-container {
+.container-row {
   display: flex;
   flex-direction: row;
 }

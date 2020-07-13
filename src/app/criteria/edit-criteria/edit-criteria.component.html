@@ -1,28 +1,15 @@
 <h2 class="text-center"><strong>{{criteriaType.name}}</strong> values</h2>
-<div class="link-button" style="padding: 0 0 1em 0;">
-  <a (click)="navigateBack()">
-    <i class="glyphicon glyphicon-chevron-left mr-5"></i>
-    back to list
-  </a>
-
-</div>
+<a class="link-button margin-bottom" (click)="navigateBack()">
+  <i class="glyphicon glyphicon-chevron-left mr-5"></i>
+  back to list
+</a>
 <div>
-  <ag-grid-angular
-    style="width: 100%; height: 900px;"
-    class="ag-theme-alpine"
-    [rowData]="criteriaValues"
-    [columnDefs]="columnDefs"
-    [frameworkComponents]="frameworkComponents"
-    [rowDragManaged]="true"
-    [animateRows]="true"
-    (rowDragEnd)="onRowDragEnd($event)"
-    [defaultColDef]="defaultColDef"
-    (gridReady)="onGridReady($event)">
+  <ag-grid-angular style="width: 100%; height: 900px;" class="ag-theme-alpine" [rowData]="criteriaValues"
+    [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" [rowDragManaged]="true" [animateRows]="true"
+    (rowDragEnd)="onRowDragEnd($event)" [defaultColDef]="defaultColDef" (gridReady)="onGridReady($event)">
   </ag-grid-angular>
 </div>
-<div class="link-button">
-  <a (click)="openModal()">Add all values</a>
-</div>
+<a class="link-button margin-top" (click)="openModal()">Add all values</a>
 <h4>Add a new value</h4>
 <table class="minimalistBlack">
   <thead>
@@ -48,13 +35,9 @@
 </table>
 <jw-modal [id]="modalId">
   <h4>Add all values for this criteria, one each line</h4>
-  <textarea class="bulk-import-text" [(ngModel)]="bulkValues"></textarea>
-  <div class="link-button-container">
-    <div class="link-button">
-      <a (click)="closeModal();">Cancel</a>
-    </div>
-    <div class="action-button">
-      <a (click)="importValues();">Save</a>
-    </div>
+  <textarea class="edit-criteria__textarea--bulk" [(ngModel)]="bulkValues"></textarea>
+  <div class="container-row">
+    <a class="link-button" (click)="closeModal();">Cancel</a>
+    <a class="action-button" (click)="importValues();">Save</a>
   </div>
 </jw-modal>
