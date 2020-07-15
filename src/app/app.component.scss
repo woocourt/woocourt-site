@@ -1,72 +1,35 @@
 @import "../variables.scss";
 
-  .toolbar {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    height: 4vh;
+  .app__container {
+    font-size: 1.6rem;
     background-color: $blue-light;
+    padding: 0 2rem 1rem 2rem;
+    .app__content {
+      padding: 1rem;
+      background-color: white;
+    }
+  }
+
+  .app__nav {
+    list-style: none;
+    padding: 0;
     color: white;
-    font-weight: 600;
-    //padding-left: 2em;
-    display:flex;
+    margin: 0;
+    li {
+      display: inline-block;
+      padding: 1.2vh 1rem 1.2vh 1rem;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      transition-property: background-color;
+      font-size: 1.2rem;
+      font-weight: 700;
+      &:hover {
+        background-color: white;
+        color: $blue-dark;
+      }
+      &.active {
+        background-color: white;
+        color: $blue-dark;
+      }
+    }
   }
-
-  .toolbar .button {
-    padding-left: 10px;
-    padding-right: 10px;
-    display:flex;
-    align-items: center;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    transition-property: background-color;
-  }
-
-  .toolbar .button.active {
-    background-color: white;
-    color: $blue-dark;
-  }
-
-  .toolbar .button:hover {
-    background-color: white;
-    color: $blue-dark;
-  }
-
-  .main-container {
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 1em;
-    background-color: $blue-light;
-  }
-
-  .main-container .content {
-    padding: 1em;
-    background-color: white;
-  }
-
-
-  // .button {
-  //   background-color: #FFFFFF; /* Green */
-  //   border: none;
-  //   color: #1976d2;
-  //   padding: 10px;
-  //   text-align: center;
-  //   text-decoration: none;
-  //   display: inline-block;
-  //   font-size: 16px;
-  //   margin: 4px 2px;
-  //   cursor: pointer;
-  //   border-radius: 8px;
-  //   transition-duration: 0.4s;
-  // }
-
-  // .button:hover {
-  //   background-color: #999;
-  //   color: white;
-  // }
-
-  // .button.active {
-  //   background-color: #999;
-  //   color: white;
-  // }

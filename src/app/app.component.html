@@ -1,11 +1,9 @@
-<div class="main-container">
-  <!-- Toolbar -->
-  <div class="toolbar" role="banner">
-    <div class="button" [ngClass]="{'active': selected===TAB_USERS}" (click)="onTabClick(0)">User</div>
-    <div class="button" [ngClass]="{'active': selected===TAB_CRITERIA}" (click)="onTabClick(1)">Criteria</div>
-  </div>
-  <div class="content">
+<div class="app__container">
+  <ul class="app__nav">
+    <li [ngClass]="{'active': selected===TAB_USERS}" (click)="onTabClick(0)">USER</li>
+    <li [ngClass]="{'active': selected===TAB_CRITERIA}" (click)="onTabClick(1)">CRITERIA</li>
+  </ul>
+  <div class="app__content">
     <router-outlet></router-outlet>
   </div>
 </div>
-
