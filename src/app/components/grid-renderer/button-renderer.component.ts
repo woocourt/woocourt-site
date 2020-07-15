@@ -5,7 +5,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular'
 @Component({
   selector: 'app-button-renderer',
   template: `
-    <div class="button-container">
+    <div>
       <a
         *ngFor="let button of params.buttons"
         class="grid__button--primary"

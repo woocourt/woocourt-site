@@ -36,7 +36,7 @@
 <jw-modal [id]="modalId">
   <h4>Add all values for this criteria, one each line</h4>
   <textarea class="edit-criteria__textarea--bulk" [(ngModel)]="bulkValues"></textarea>
-  <div class="container-row">
+  <div >
     <a class="button--secondary" (click)="closeModal();">Cancel</a>
     <a class="button--primary" (click)="importValues();">Save</a>
   </div>

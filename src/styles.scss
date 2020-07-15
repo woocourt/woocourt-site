@@ -38,40 +38,6 @@ html {
   display: none;
 }
 
-.link-button {
-  display: inline-block;
-  margin-right: 1rem;
-  padding: .5rem 1rem .5rem 1rem;
-  text-decoration: none;
-  border-radius: 1rem;
-  background-color: $colour-button-secondary;
-  color: white;
-  transition-duration: 0.2s;
-  transition-property: background-color;
-}
-.link-button:hover {
-  background-color: darken($colour-button-secondary, 15%);
-  text-decoration: none;
-  color: white;
-}
-
-.action-button {
-  display: inline-block;
-  margin-right: 1em;
-  padding: .5rem 1rem .5rem 1rem;
-  text-decoration: none;
-  border-radius: 1rem;
-  background-color: $colour-button-primary;
-  color: white;
-  transition-duration: 0.4s;
-  transition-property: background-color;
-}
-.action-button:hover {
-  background-color: $colour-button-primary;
-  text-decoration: none;
-  color: white;
-}
-
 .container-row {
   display: flex;
   flex-direction: row;
