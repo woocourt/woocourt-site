@@ -1,0 +1,16 @@
+@mixin styled-button($colour) {
+  cursor: pointer;
+  margin-right: 1em;
+  padding: .5rem 1rem .5rem 1rem;
+  text-decoration: none;
+  border-radius: 100px;
+  background-color: $colour;
+  color: white;
+  transition-duration: 0.4s;
+  transition-property: background-color;
+  &:hover {
+    background-color: darken($colour, 15%);
+    color: white;
+    text-decoration: none;
+  }
+}

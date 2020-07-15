@@ -2,7 +2,7 @@
 
   .app__container {
     font-size: 1.6rem;
-    background-color: $blue-light;
+    background-color: $colour-button-primary;
     padding: 0 2rem 1rem 2rem;
     .app__content {
       padding: 1rem;
@@ -25,11 +25,11 @@
       font-weight: 700;
       &:hover {
         background-color: white;
-        color: $blue-dark;
+        color: darken($colour-button-primary, 15%);
       }
       &.active {
         background-color: white;
-        color: $blue-dark;
+        color: darken($colour-button-primary, 15%);
       }
     }
   }

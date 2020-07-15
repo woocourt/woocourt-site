@@ -5,29 +5,11 @@ import { ICellRendererAngularComp } from 'ag-grid-angular'
 @Component({
   selector: 'app-button-renderer',
   template: `
-    <style>
-      .grid-button {
-        margin-right: 1em;
-        padding: 3px 10px 3px 10px;
-        text-decoration: none;
-        border-radius: 8px;
-        background-color: #67a0d8;
-        color: white;
-        transition-duration: 0.4s;
-        transition-property: background-color;
-      }
-      .grid-button:hover {
-        background-color: #1976d2;
-      }
-      .grid-button-disabled {
-        display:none;
-      }
-    </style>
     <div class="button-container">
       <a
         *ngFor="let button of params.buttons"
-        class="grid-button"
-        [ngClass]="{'grid-button-disabled': button.disabledDataTypes && button.disabledDataTypes.includes(data_type) }"
+        class="grid__button--primary"
+        [ngClass]="{'grid__button--disabled': button.disabledDataTypes && button.disabledDataTypes.includes(data_type) }"
         (click)="onClick($event, button.onClick)">{{button.label}}
       </a>
     </div>

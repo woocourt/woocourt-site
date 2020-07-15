@@ -15,8 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { en_GB } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ListUsersComponent } from './user/list-users/list-users.component';
@@ -48,7 +46,7 @@ registerLocaleData(en);
   ],
   providers: [ApiService, {provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi : true}, { provide: NZ_I18N, useValue: en_GB }],
+    multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
