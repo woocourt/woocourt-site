@@ -10,7 +10,9 @@ import { ICellRendererAngularComp } from 'ag-grid-angular'
         *ngFor="let button of params.buttons"
         class="grid__button--primary"
         [ngClass]="{'grid__button--disabled': button.disabledDataTypes && button.disabledDataTypes.includes(data_type) }"
-        (click)="onClick($event, button.onClick)">{{button.label}}
+        (click)="onClick($event, button.onClick)">
+        {{button.label}}
+        <i *ngIf="button.icon" [class]="'glyphicon glyphicon-' + button.icon + ' mr-5'"></i>
       </a>
     </div>
     `,

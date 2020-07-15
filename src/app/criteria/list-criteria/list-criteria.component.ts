@@ -77,9 +77,11 @@ export class ListCriteriaComponent implements OnInit {
           buttons: [{
             onClick: this.onBtnDeleteClick.bind(this),
             label: 'Delete',
+            icon: 'trash',
           }, {
             onClick: this.onBtnEditClick.bind(this),
-            label: 'Edit Values',
+            label: 'Edit',
+            icon: 'pencil',
             disabledDataTypes: [DataTypes.criteriaDataTypes.BTHYR.id],
           }]
         }
@@ -166,12 +168,12 @@ export class ListCriteriaComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api
     this.gridColumnApi = params.columnApi
-    if (this.gridApi) this.gridApi.sizeColumnsToFit()
+    if (this.gridApi) { this.gridApi.sizeColumnsToFit() }
     return
   }
 
   onModelUpdated($event) {
-    if (this.gridApi) this.gridApi.sizeColumnsToFit()
+    if (this.gridApi) { this.gridApi.sizeColumnsToFit() }
     return
   }
 
@@ -188,7 +190,7 @@ export class ListCriteriaComponent implements OnInit {
   }
 
   deleteCriteria(id: string, name: string): void {
-    if(confirm(`are you sure you want to delete ${name} and all its possible values?`)) {
+    if (confirm(`are you sure you want to delete ${name} and all its possible values?`)) {
     this.apiService.deleteCriteriaType(id)
       .subscribe(_ => {
         this.criteria = this.criteria.filter(s => s.id !== id)
@@ -206,7 +208,7 @@ export class ListCriteriaComponent implements OnInit {
 
   editCriteriaType(id: string): void {
     window.localStorage.removeItem('criteriaTypeId')
-      window.localStorage.setItem('criteriaTypeId', id)
-      this.router.navigate(['edit-criteria'])
+    window.localStorage.setItem('criteriaTypeId', id)
+    this.router.navigate(['edit-criteria'])
   }
 }

@@ -9,7 +9,10 @@
     (rowDragEnd)="onRowDragEnd($event)" [defaultColDef]="defaultColDef" (gridReady)="onGridReady($event)">
   </ag-grid-angular>
 </div>
-<a class="button--secondary margin-top" (click)="openModal()">Add all values</a>
+<a class="button--secondary margin-top" (click)="openModal()">
+  Add all values
+  <i class="glyphicon glyphicon-list mr-5"></i>
+</a>
 <h4>Add a new value</h4>
 <table class="minimalistBlack">
   <thead>

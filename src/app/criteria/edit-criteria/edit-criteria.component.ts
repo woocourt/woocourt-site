@@ -36,6 +36,7 @@ export class EditCriteriaComponent implements OnInit {
         buttons: [{
           onClick: this.onBtnDeleteClick.bind(this),
           label: 'Delete',
+          icon: 'trash',
         }]
       },
     },
