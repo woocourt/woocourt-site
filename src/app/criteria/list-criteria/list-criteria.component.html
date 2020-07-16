@@ -13,6 +13,33 @@
     (modelUpdated)="onModelUpdated($event)">
 </ag-grid-angular>
 <h4>Add a new criteria</h4>
+
+<div class="form-entry--inline" style="width: 50%;">
+  <label for="add-name">Name</label>
+  <input type="text" name="add-name" id="add-name" [(ngModel)]="newCriteria.name">
+</div>
+<div class="form-entry--inline">
+  <label for="add-required">Required</label>
+  <input type="checkbox" name="add-required" id="add-required" [(ngModel)]="newCriteria.required">
+</div>
+<div class="form-entry--inline">
+  <label for="add-datatype">Data Type</label>
+  <select [(ngModel)]="newCriteria.data_type">
+    <option
+      *ngFor="let option of dataTypes"
+      [value]="option.value">
+      {{option.name}}
+    </option>
+  </select>
+</div>
+<div class="form-entry--inline">
+  <a class="button--primary" (click)="addCriteria();">
+    Add
+    <i class="glyphicon glyphicon-plus mr-5"></i>
+  </a>
+</div>
+
+
 <table class="minimalistBlack mt-2">
   <thead>
     <tr>

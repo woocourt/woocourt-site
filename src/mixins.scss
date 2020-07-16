@@ -14,3 +14,12 @@
     text-decoration: none;
   }
 }
+
+@mixin form-entry_input {
+  border: 1px solid;
+  border-color: $colour-input-border;
+  font-size: 1.6rem;
+  color: $colour-input-text;
+  background-color: white;
+  width: 100%;
+}

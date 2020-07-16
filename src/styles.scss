@@ -37,3 +37,34 @@ html {
 .grid__button--disabled {
   display: none;
 }
+
+.form-entry--inline {
+  display: inline-block;
+  label {
+    display: block;
+  }
+  margin-right: 3rem;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  input {
+    @include form-entry-input;
+    padding: .3rem;
+
+    &[type=checkbox] {
+      margin: .8rem;
+      padding-bottom: 0;
+    }
+  }
+
+  select {
+    @include form-entry-input;
+    height: 100%;
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    padding: .5rem;
+  }
+}

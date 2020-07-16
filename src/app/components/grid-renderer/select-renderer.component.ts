@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { ICellRendererAngularComp } from 'ag-grid-angular'
-//import { ICellRendererParams, IAfterGuiAttachedParams } from 'ag-grid'
+// import { ICellRendererParams, IAfterGuiAttachedParams } from 'ag-grid'
 
 @Component({
   selector: 'app-select-renderer',
@@ -50,7 +50,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular'
       padding: 30px;
     }
   </style>
-    <div class="box">
+    <div class="form-entry--inline">
       <select (change)="onOptionsSelected($event)">
         <option
           [selected]="option.value === value"
