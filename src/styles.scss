@@ -69,8 +69,9 @@ h4 {
   select {
     @include form-entry-input;
     height: 100%;
-    -webkit-appearance: button;
-    appearance: button;
+    -moz-appearance:button; /* Firefox */
+    -webkit-appearance:button; /* Safari and Chrome */
+    appearance:button;
     outline: none;
     padding: .5rem;
   }

@@ -24,7 +24,7 @@
 </div>
 <div class="form-entry--inline">
   <label for="add-datatype">Data Type</label>
-  <select [(ngModel)]="newCriteria.data_type">
+  <select name="add-datatype" id="add-datatype" [(ngModel)]="newCriteria.data_type">
     <option
       *ngFor="let option of dataTypes"
       [value]="option.value">

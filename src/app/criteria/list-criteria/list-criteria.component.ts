@@ -199,11 +199,16 @@ export class ListCriteriaComponent implements OnInit {
     }
 
   addCriteria() {
+    if (!this.newCriteria.name || !this.newCriteria.data_type) {
+      alert('please enter all the fields to add a new criteria')
+      return
+    }
     this.apiService.addCriteriaType(this.newCriteria)
       .subscribe(_ => {
         this.newCriteria = new CriteriaType()
         this.ngOnInit()
       })
+    this.newCriteria = new CriteriaType()
   }
 
   editCriteriaType(id: string): void {
