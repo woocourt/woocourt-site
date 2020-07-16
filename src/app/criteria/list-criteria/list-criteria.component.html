@@ -38,27 +38,3 @@
     <i class="glyphicon glyphicon-plus mr-5"></i>
   </a>
 </div>
-
-
-<table class="minimalistBlack mt-2">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Required</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>
-        <input type="text" class="form-control" class="text-input" id="step" [(ngModel)]="newCriteria.name" />
-      </td>
-      <td>
-        <input type="checkbox" class="form-control" id="value" [(ngModel)]="newCriteria.required" />
-      </td>
-      <td><button type="button" (click)="addCriteria()">Add</button></td>
-    </tr>
-  </tfoot>
-  <tbody>
-  </tbody>
-</table>
