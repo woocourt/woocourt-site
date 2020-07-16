@@ -1,11 +1,11 @@
-import { CriteriaValue } from './../../model/criteriaValue.model';
+import { CriteriaValue } from './../../model/criteriaValue.model'
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { CriteriaType } from 'src/app/model/criteriaType.model'
-import { ButtonRendererComponent } from 'src/app/components/grid-renderer/button-renderer.component';
+import { ButtonRendererComponent } from 'src/app/components/grid-renderer/button-renderer.component'
 import { ApiService } from 'src/app/services/api.service'
-import { ModalService } from 'src/app/_modal';
-import { Observable, forkJoin } from 'rxjs';
+import { ModalService } from 'src/app/_modal'
+import { Observable, forkJoin } from 'rxjs'
 
 @Component({
   selector: 'app-edit-criteria',
