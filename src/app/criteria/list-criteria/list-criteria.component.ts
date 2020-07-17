@@ -116,7 +116,6 @@ export class ListCriteriaComponent implements OnInit {
   }
 
   async typeChanged($event) {
-    // console.log('type changed', $event, 'type selected', this.dataTypes[$event.selectedIndex])
     const type = {
       id: $event.rowData.id,
       name: $event.rowData.name,
@@ -125,7 +124,9 @@ export class ListCriteriaComponent implements OnInit {
       data_type: this.dataTypes[$event.selectedIndex].value,
       values: [],
     }
+    this.criteria[$event.rowIndex] = type
     await this.apiService.updateCriteriaType(type).toPromise()
+    this.updateCriteriaTypes()
   }
 
   onBtnDeleteClick($event) {
@@ -145,6 +146,7 @@ export class ListCriteriaComponent implements OnInit {
         id: x.data.id,
         name: x.data.name,
         required: x.data.required,
+        data_type: x.data.data_type,
         values: [],
       }
     })
@@ -155,13 +157,7 @@ export class ListCriteriaComponent implements OnInit {
       rowUpdates.push(this.apiService.updateCriteriaType(criteriaType))
     }
     forkJoin(rowUpdates).subscribe({
-      next: () => {
-        this.apiService.getCriteriaTypes()
-          .subscribe((data: CriteriaType[]) => {
-            this.criteria = data
-            // console.log('criteria', this.criteria)
-          })
-      }
+      next: () => this.updateCriteriaTypes()
     })
   }
 
@@ -182,15 +178,11 @@ export class ListCriteriaComponent implements OnInit {
       this.router.navigate(['login'])
       return
     }
-    this.apiService.getCriteriaTypes()
-      .subscribe((data: CriteriaType[]) => {
-        this.criteria = data
-        // console.log('criteria', this.criteria)
-      })
+    this.updateCriteriaTypes()
   }
 
   deleteCriteria(id: string, name: string): void {
-    if (confirm(`are you sure you want to delete ${name} and all its possible values?`)) {
+    if (confirm(`are you sure you want to delete [${name}] and all its possible values?`)) {
     this.apiService.deleteCriteriaType(id)
       .subscribe(_ => {
         this.criteria = this.criteria.filter(s => s.id !== id)
@@ -215,5 +207,12 @@ export class ListCriteriaComponent implements OnInit {
     window.localStorage.removeItem('criteriaTypeId')
     window.localStorage.setItem('criteriaTypeId', id)
     this.router.navigate(['edit-criteria'])
+  }
+
+  updateCriteriaTypes() {
+    this.apiService.getCriteriaTypes()
+    .subscribe((data: CriteriaType[]) => {
+      this.criteria = data
+    })
   }
 }
