@@ -20,5 +20,6 @@ jobs:
       - run:
           name: Install Angular CLI and dependencies
           command: |
+            export NG_CLI_ANALYTICS=ci
             sudo npm i @angular/cli@9.1.11
             npm install
