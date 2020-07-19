@@ -32,7 +32,7 @@ jobs:
           command: |
             ng build --prod --base-href https://woocourt.github.io/woocourt-site/
 
-      -run:
+      - run:
           name: push to github deployment repo
           command: |
             git config --global user.email ${GIT_EMAIL}
@@ -41,4 +41,3 @@ jobs:
             git commit .
             git remote add github-deploy https://github.com/woocourt/woocourt-site.git
             git push github-deploy master
-
