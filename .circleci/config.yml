@@ -38,6 +38,6 @@ jobs:
             git config --global user.email ${GIT_EMAIL}
             git config --global user.name ${GIT_USER}
             git config --global user.password ${GIT_PASSWORD}
-            git commit . -n "deployment"
+            git commit . -m "deployment"
             git remote add github-deploy https://github.com/woocourt/woocourt-site.git
             git push github-deploy master
