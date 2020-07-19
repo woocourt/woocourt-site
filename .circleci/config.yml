@@ -17,9 +17,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - dependencies-cache
 
+
+
       - run:
           name: Install Angular CLI and dependencies
           command: |
-            export NG_CLI_ANALYTICS=ci
-            sudo npm i @angular/cli@9.1.11
+            sudo npm i @angular/cli@9.1.11 > /dev/null
             npm install
