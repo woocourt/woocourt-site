@@ -17,10 +17,17 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - dependencies-cache
 
-
-
       - run:
-          name: Install Angular CLI and dependencies
+          name: Install Angular CLI
           command: |
             sudo npm i @angular/cli@9.1.11 > /dev/null
+
+      - run:
+          name: Install dependencies
+          command: |
             npm install
+
+      - run:
+          name: build dist artifacts
+          command: |
+            ng build --prod --base-href https://woocourt.github.io/woocourt-site/
