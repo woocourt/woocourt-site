@@ -11,6 +11,10 @@ jobs:
       - checkout
       # Download and cache dependencies
 
+      - add_ssh_keys:
+          fingerprints:
+            - "0a:c5:80:f7:8c:41:45:1c:0f:73:70:37:0a:7a:63:e5"
+
       - restore_cache:
           keys:
             - dependencies-cache-{{ checksum "package.json" }}
@@ -35,10 +39,8 @@ jobs:
       - run:
           name: push to github deployment repo
           command: |
-            git config --global -l
             git config --global user.email ${GIT_EMAIL}
             git config --global user.name ${GIT_USER}
-            git config --global user.password ${GIT_PASSWORD}
             git commit . -m "deployment"
             git remote add github-deploy https://github.com/woocourt/woocourt-site.git
             git push github-deploy master
