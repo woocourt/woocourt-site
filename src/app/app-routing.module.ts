@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListCriteriaComponent } from './criteria/list-criteria/list-criteria.component';
 import { LoginComponent } from './login/login.component';
 import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.component';
+import { UserCriteriaComponent } from './user/user-criteria/user-criteria.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'list-users', component: ListUsersComponent },
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: 'edit-criteria', component: EditCriteriaComponent },
+  { path: 'user-criteria', component: UserCriteriaComponent },
   { path: 'login', component: LoginComponent }
 ]
 

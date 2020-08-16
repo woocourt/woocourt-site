@@ -19,6 +19,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ListUsersComponent } from './user/list-users/list-users.component';
 import { ModalModule } from './_modal';
+import { UserCriteriaComponent } from './user/user-criteria/user-criteria.component';
 
 registerLocaleData(en);
 
@@ -32,7 +33,8 @@ registerLocaleData(en);
     SelectRendererComponent,
     LoginComponent,
     EditCriteriaComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    UserCriteriaComponent
   ],
   imports: [
     BrowserModule,

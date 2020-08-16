@@ -49,6 +49,6 @@ export class ListUsersComponent implements OnInit {
   editUser(id: string): void {
     window.localStorage.removeItem('userId')
     window.localStorage.setItem('userId', id)
-    this.router.navigate(['user-features'])
+    this.router.navigate(['user-criteria'])
   }
 }
