@@ -1,1 +1,17 @@
-<p>user-criteria works!</p>
+<h2 class="text-center">user <strong>{{userId}}</strong> features</h2>
+<a class="button--secondary margin-bottom" (click)="navigateBack()">
+  <i class="glyphicon glyphicon-chevron-left mr-5"></i>
+  back to list
+</a>
+<div *ngFor="let item of criteria" >
+  <div *ngIf="item.data_type === criteriaDataTypes.SNGVAL" class="form-entry--inline margin-top-2">
+    <label [for]="item.name + '_id'">{{item.name}}</label>
+    <select [name]="item.name" [id]="item.name + '_id'" [(ngModel)]="item.id">
+      <option
+        *ngFor="let option of item.values"
+        [value]="option.value">
+        {{option.value_display}}
+      </option>
+    </select>
+  </div>
+</div>

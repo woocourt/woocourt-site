@@ -1,4 +1,8 @@
+import { CriteriaValue } from './../../model/criteriaValue.model';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+import { CriteriaType } from 'src/app/model/criteriaType.model';
 
 @Component({
   selector: 'app-user-criteria',
@@ -7,9 +11,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCriteriaComponent implements OnInit {
 
-  constructor() { }
+  criteria: CriteriaType[]
+  userId: string
 
-  ngOnInit(): void {
+  criteriaDataTypes = {
+    SNGVAL: 'f5463324-65dc-4e47-9076-481105022754',
+    MLTVAL: '8f360704-83f1-4d85-95bd-8166a1a72a48',
+    BTHYR: '811fa0ac-a90a-4767-a0c9-6cfe156e478a',
+    NUMVAL: 'e9e432e2-cbfd-473e-bd0d-9988ca96f927',
+    NUMRNG: '0831f6fe-89d1-4b7c-896b-07b583b5a183',
   }
 
+  constructor(private router: Router, private apiService: ApiService) { }
+
+  ngOnInit() {
+    if (!window.localStorage.getItem('token')) {
+      this.router.navigate(['login'])
+      return
+    }
+    if (!window.localStorage.getItem('userId')) this.navigateBack()
+    this.userId = window.localStorage.getItem('userId')
+
+    this.updateCriteriaTypes()
+  }
+
+  updateCriteriaTypes() {
+    this.apiService.getCriteriaTypes()
+    .subscribe((data: CriteriaType[]) => {
+      for (const item of data) {
+        this.apiService.getCriteriaValues(item.id)
+        .subscribe((values: CriteriaValue[]) => {
+          item.values = values
+        })
+      }
+      this.criteria = data
+    })
+  }
+
+  navigateBack() {
+    this.router.navigate(['list-users'])
+  }
 }
