@@ -1,5 +1,5 @@
 <div class="app__container">
-  <ul class="app__nav">
+  <ul class="app__nav" *ngIf="showTabs()" >
     <li [ngClass]="{'active': selected===TAB_USERS}" (click)="onTabClick(0)">USER</li>
     <li [ngClass]="{'active': selected===TAB_CRITERIA}" (click)="onTabClick(1)">CRITERIA</li>
   </ul>

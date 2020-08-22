@@ -5,6 +5,7 @@ import { ListCriteriaComponent } from './criteria/list-criteria/list-criteria.co
 import { LoginComponent } from './login/login.component';
 import { EditCriteriaComponent } from './criteria/edit-criteria/edit-criteria.component';
 import { UserCriteriaComponent } from './user/user-criteria/user-criteria.component';
+import { UserCriteriaExternalComponent } from './user/user-criteria-external/user-criteria-external.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'list-criteria', component: ListCriteriaComponent },
   { path: 'edit-criteria', component: EditCriteriaComponent },
   { path: 'user-criteria', component: UserCriteriaComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'user-questions/user/:userid', component: UserCriteriaExternalComponent }
 ]
 
 @NgModule({

@@ -51,4 +51,8 @@ export class ListUsersComponent implements OnInit {
     window.localStorage.setItem('userId', id)
     this.router.navigate(['user-criteria'])
   }
+
+  generateQuestionsLink(id: string) {
+    alert(`${window.location.origin}/user-questions/user/${id}`)
+  }
 }
