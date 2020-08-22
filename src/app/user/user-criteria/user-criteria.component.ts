@@ -13,6 +13,7 @@ export class UserCriteriaComponent implements OnInit {
 
   criteria: CriteriaType[]
   userId: string
+  values: any = {}
 
   criteriaDataTypes = {
     SNGVAL: 'f5463324-65dc-4e47-9076-481105022754',
@@ -50,5 +51,23 @@ export class UserCriteriaComponent implements OnInit {
 
   navigateBack() {
     this.router.navigate(['list-users'])
+  }
+
+  birthYears(): number[] {
+    const range = (start, end) => {
+      const list = [];
+      for (let i = start; i <= end; i++) {
+          list.push(i);
+        }
+      return list
+    }
+
+    const currentYear = new Date().getFullYear()
+
+    return range(1950, currentYear - 18)
+  }
+
+  sendValues() {
+    console.log('values to send')
   }
 }

@@ -3,6 +3,11 @@
   @include styled-button($colour-button-primary);
 }
 
+.bigbutton--primary {
+  display: inline-block;
+  @include styled-button-big($colour-button-primary);
+}
+
 .button--secondary {
   display: inline-block;
   @include styled-button($colour-button-secondary);
@@ -16,9 +21,28 @@
   display: none;
 }
 
+.form-entry-multiselect--inline {
+  display: inline-block;
+  .block-label {
+    display: block;
+  }
+  margin-right: 3rem;
+
+  div.values {
+    height: 200px;
+    border: 1px solid;
+    overflow: scroll;
+  }
+
+  input {
+    margin-right: .8rem;
+    margin-left: .4rem;
+  }
+}
+
 .form-entry--inline {
   display: inline-block;
-  label {
+  .block-label {
     display: block;
   }
   margin-right: 3rem;

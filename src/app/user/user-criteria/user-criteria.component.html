@@ -4,6 +4,7 @@
   back to list
 </a>
 <div *ngFor="let item of criteria" >
+
   <div *ngIf="item.data_type === criteriaDataTypes.SNGVAL" class="form-entry--inline margin-top-2">
     <label [for]="item.name + '_id'">{{item.name}}</label>
     <select [name]="item.name" [id]="item.name + '_id'" [(ngModel)]="item.id">
@@ -14,4 +15,36 @@
       </option>
     </select>
   </div>
+
+  <div *ngIf="item.data_type === criteriaDataTypes.MLTVAL" class="form-entry-multiselect--inline margin-top-2">
+    <label [for]="item.name + '_id'">{{item.name}}</label>
+    <div class="values">
+      <div class="entry" *ngFor="let option of item.values" >
+        <input type="checkbox" [name]="option.value_display" [id]="option.value_display" [value]="option.value">
+        <span>{{option.value_display}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="item.data_type === criteriaDataTypes.NUMVAL" class="form-entry--inline margin-top-2">
+    <label [for]="item.name + '_id'">{{item.name}}</label>
+    <input type="number" [name]="item.name" [id]="item.name">
+  </div>
+
+  <div *ngIf="item.data_type === criteriaDataTypes.BTHYR" class="form-entry--inline margin-top-2">
+    <label [for]="item.name + '_id'">Birthday year</label>
+    <select [name]="item.name" [id]="item.name + '_id'" [(ngModel)]="item.id">
+      <option
+        *ngFor="let option of birthYears()"
+        [value]="option">
+        {{option}}
+      </option>
+    </select>
+  </div>
+
 </div>
+
+<a class="bigbutton--primary margin-top-2" (click)="navigateBack()">
+  Save values
+  <i class="glyphicon glyphicon-ok mr-5"></i>
+</a>
