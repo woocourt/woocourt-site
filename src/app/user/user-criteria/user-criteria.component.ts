@@ -46,6 +46,9 @@ export class UserCriteriaComponent implements OnInit {
         })
       }
       this.criteria = data
+      this.criteria.forEach(c => {
+        this.values[c.id] = {}
+      })
     })
   }
 
@@ -68,6 +71,11 @@ export class UserCriteriaComponent implements OnInit {
   }
 
   sendValues() {
-    console.log('values to send')
+    console.log('values to send', this.values)
+    const processedValues = Object.keys(this.values).map(criteriaId => ({
+      criteria: this.criteria.find(x => x.id === criteriaId),
+      value: this.values[criteriaId]
+    }))
+    console.log('processed', processedValues)
   }
 }
