@@ -88,9 +88,13 @@ export class ApiService {
     })
   }
 
-  saveAllUserCriteria(user_id: string, criteria_user_values: any): void {
+  saveAllUserCriteria(user_id: string, criteria_user_values: any): Observable<ApiResponse> {
     console.log(`calling api save all user (${user_id}) data with the following object`,
     criteria_user_values)
+    return this.http.post<ApiResponse>(`${this.baseUrl}/user/allcriteria`, {
+      user_id,
+      criteria_user_values,
+    })
   }
 
   ///////////////////////// old example methods

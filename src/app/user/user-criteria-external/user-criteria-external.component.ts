@@ -43,7 +43,11 @@ export class UserCriteriaExternalComponent implements OnInit {
       }
       this.criteria = data
       this.criteria.forEach(c => {
-        this.values[c.id] = {}
+        if (c.data_type === this.criteriaDataTypes.MLTVAL) {
+          this.values[c.id] = {}
+        } else {
+          this.values[c.id] = ''
+        }
       })
     })
   }
@@ -74,5 +78,8 @@ export class UserCriteriaExternalComponent implements OnInit {
     }))
     console.log('processed', processedValues)
     this.apiService.saveAllUserCriteria(this.userId, processedValues)
+    .subscribe(data => {
+      console.log('response', data)
+    })
   }
 }
