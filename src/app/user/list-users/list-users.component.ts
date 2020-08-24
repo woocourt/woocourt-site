@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core'
 import { Router } from '@angular/router'
 import { User } from '../../model/user.model'
@@ -53,6 +54,6 @@ export class ListUsersComponent implements OnInit {
   }
 
   generateQuestionsLink(id: string) {
-    alert(`${window.location.origin}/user-questions/user/${id}`)
+    alert(`${environment.baseUrl}user-questions/user/${id}`)
   }
 }
