@@ -3,6 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core'
 import { Router } from '@angular/router'
 import { User } from '../../model/user.model'
 import { ApiService } from 'src/app/services/api.service'
+import { ModalService } from 'src/app/_modal';
 
 
 @Component({
@@ -12,12 +13,15 @@ import { ApiService } from 'src/app/services/api.service'
 })
 export class ListUsersComponent implements OnInit {
 
-  constructor(private router: Router, private apiService: ApiService) {
+  constructor(private router: Router, private apiService: ApiService, private modalService: ModalService) {
     this.users = []
   }
 
   users: User[]
   newUser: User = new User()
+  modalId = 'generate-link-modal'
+  userQuestionsLink = ''
+
 
   ngOnInit() {
     if (!window.localStorage.getItem('token')) {
@@ -54,6 +58,18 @@ export class ListUsersComponent implements OnInit {
   }
 
   generateQuestionsLink(id: string) {
-    alert(`${environment.baseUrl}user-questions/user/${id}`)
+    // alert(`${environment.baseUrl}user-questions/user/${id}`)
+    this.openGenerateLinkModal(id)
   }
+
+  openGenerateLinkModal(userId: string) {
+    this.userQuestionsLink = `${environment.baseUrl}user-questions/user/${userId}`
+    this.modalService.open(this.modalId);
+  }
+
+  closeModal() {
+    this.modalService.close(this.modalId);
+    this.userQuestionsLink = ''
+  }
+
 }

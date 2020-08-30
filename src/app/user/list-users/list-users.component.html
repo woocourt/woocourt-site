@@ -29,3 +29,16 @@
     </tr>
   </tbody>
 </table>
+
+<jw-modal [id]="modalId">
+  <h4>generate link for user</h4>
+  <div class="margin-top-2">
+    <span><a [href]="userQuestionsLink">{{userQuestionsLink}}</a></span>
+    <span>
+      <a class="button--primary margin-left-2" >
+        Copy link
+        <i class="glyphicon glyphicon-copy mr-5"></i>
+      </a>
+    </span>
+  </div>
+</jw-modal>
