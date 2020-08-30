@@ -1,5 +1,5 @@
 ﻿<div class="jw-modal">
-    <div class="jw-modal-body">
+    <div [ngClass]="{'jw-modal-body': !small, 'jw-modal-body--small': small}">
         <ng-content></ng-content>
     </div>
 </div>

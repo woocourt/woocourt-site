@@ -58,7 +58,6 @@ export class ListUsersComponent implements OnInit {
   }
 
   generateQuestionsLink(id: string) {
-    // alert(`${environment.baseUrl}user-questions/user/${id}`)
     this.openGenerateLinkModal(id)
   }
 
@@ -71,5 +70,14 @@ export class ListUsersComponent implements OnInit {
     this.modalService.close(this.modalId);
     this.userQuestionsLink = ''
   }
+
+  copyToClipboard = str => {
+    const el = document.createElement('textarea');
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
 
 }
