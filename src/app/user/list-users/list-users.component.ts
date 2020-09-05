@@ -80,4 +80,6 @@ export class ListUsersComponent implements OnInit {
     document.body.removeChild(el);
   };
 
+  onCodeChanged($event) { }
+  onCodeCompleted($event) { }
 }

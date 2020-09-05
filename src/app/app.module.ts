@@ -22,6 +22,8 @@ import { ModalModule } from './_modal';
 import { UserCriteriaComponent } from './user/user-criteria/user-criteria.component';
 import { UserCriteriaExternalComponent } from './user/user-criteria-external/user-criteria-external.component';
 
+import { CodeInputModule } from 'angular-code-input';
+
 registerLocaleData(en);
 
 
@@ -46,7 +48,8 @@ registerLocaleData(en);
     ModalModule,
     ReactiveFormsModule,
     AgGridModule.withComponents([]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CodeInputModule
   ],
   providers: [ApiService, {provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
