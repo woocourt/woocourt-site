@@ -30,6 +30,22 @@ export class UserCriteriaExternalComponent implements OnInit {
       this.userId = params.get('userid')
     });
     this.updateCriteriaTypes()
+
+    this.apiService.getUserCriteria(this.userId)
+    .subscribe(data => {
+      data.forEach(element => {
+        if (element.data_type === this.criteriaDataTypes.SNGVAL) {
+          this.values[element.criteria_type_id] = element.criteria_value_id
+        }
+        if (element.data_type === this.criteriaDataTypes.NUMVAL ||
+          element.data_type === this.criteriaDataTypes.BTHYR) {
+          this.values[element.criteria_type_id] = element.num_value
+        }
+      })
+      console.log('user criteria', data)
+      console.log('display values', this.values)
+    })
+
   }
 
   updateCriteriaTypes() {
