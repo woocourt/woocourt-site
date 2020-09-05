@@ -33,7 +33,7 @@
 <jw-modal [id]="modalId" [small]="true">
   <h4>Questions Link for user</h4>
   <div class="margin-top-2">
-    <span><a [href]="userQuestionsLink">{{userQuestionsLink}}</a></span>
+    <span><a target="_blank" [href]="userQuestionsLink">{{userQuestionsLink}}</a></span>
     <span>
       <a class="button--primary margin-left-2" (click)="copyToClipboard(userQuestionsLink)">
         Copy link
