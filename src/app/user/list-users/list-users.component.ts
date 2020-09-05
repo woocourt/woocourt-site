@@ -67,19 +67,30 @@ export class ListUsersComponent implements OnInit {
   }
 
   closeModal() {
-    this.modalService.close(this.modalId);
+    this.modalService.close(this.modalId)
     this.userQuestionsLink = ''
   }
 
   copyToClipboard = str => {
-    const el = document.createElement('textarea');
-    el.value = str;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+    const el = document.createElement('textarea')
+    el.value = str
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
   };
 
-  onCodeChanged($event) { }
-  onCodeCompleted($event) { }
+  onCodeChanged($event) {
+    console.log('on code changed', $event)
+  }
+  onCodeCompleted($event) {
+    console.log('on code completed', $event)
+    this.newUser.pin = $event.split('')
+    console.log('user', this.newUser)
+  }
+
+  getPinString(user: User) {
+    if (!user.pin) return;
+    return user.pin.join('').replace(/ /g, '')
+  }
 }

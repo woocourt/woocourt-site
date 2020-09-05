@@ -29,7 +29,15 @@
   <tbody>
     <tr *ngFor="let item of users">
       <td>{{ item.code }}</td>
-      <td>{{ item.pin }}</td>
+      <td>
+        <code-input
+        [isCodeHidden]="false"
+        [isNonDigitsCode]="false"
+        [codeLength]="4"
+        [code]="getPinString(item)">
+      </code-input>
+
+      </td>
       <td>{{ item.created_at }}</td>
       <td>
         <button type="button" (click)="deleteUser(item.id, item.code)">Delete</button>
