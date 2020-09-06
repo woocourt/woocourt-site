@@ -24,6 +24,8 @@ import { UserCriteriaExternalComponent } from './user/user-criteria-external/use
 
 import { CodeInputModule } from 'angular-code-input';
 
+import { ToastrModule } from 'ngx-toastr';
+
 registerLocaleData(en);
 
 
@@ -49,7 +51,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     AgGridModule.withComponents([]),
     BrowserAnimationsModule,
-    CodeInputModule
+    CodeInputModule,
+    ToastrModule.forRoot()
   ],
   providers: [ApiService, {provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

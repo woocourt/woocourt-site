@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CriteriaType } from 'src/app/model/criteriaType.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-criteria',
@@ -23,7 +24,10 @@ export class UserCriteriaExternalComponent implements OnInit {
     NUMRNG: '0831f6fe-89d1-4b7c-896b-07b583b5a183',
   }
 
-  constructor(private router: Router, private apiService: ApiService, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router,
+              private apiService: ApiService,
+              private activatedRoute: ActivatedRoute,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -90,6 +94,8 @@ export class UserCriteriaExternalComponent implements OnInit {
   }
 
   sendValues() {
+    this.toastr.error(`Please, enter the correct 4 digit PIN`)
+    return
     console.log('values to send', this.values)
     const processedValues = Object.keys(this.values).map(criteriaId => ({
       criteria: this.criteria.find(x => x.id === criteriaId),
@@ -101,4 +107,6 @@ export class UserCriteriaExternalComponent implements OnInit {
       console.log('response', data)
     })
   }
+
+  onCodeCompleted($event) {}
 }

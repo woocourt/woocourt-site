@@ -1,6 +1,16 @@
 <div style="padding-left: 20rem;">
 
   <h2 >Please fill the data about yourself answering the following questions</h2>
+
+  <div class="form-entry--inline margin-top-2">
+    <label>Enter your 4 digit PIN</label>
+    <code-input [isCodeHidden]="false"
+      [isNonDigitsCode]="false"
+      [codeLength]="4"
+      (codeCompleted)="onCodeCompleted($event)">
+    </code-input>
+  </div>
+
   <div *ngFor="let item of criteria" >
 
     <div *ngIf="item.data_type === criteriaDataTypes.SNGVAL" class="form-entry--inline margin-top-2">
