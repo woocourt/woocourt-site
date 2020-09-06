@@ -77,6 +77,10 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/user`)
   }
 
+  getUserById(id: string): Observable<User> {
+    return this.http.get<any>(`${this.baseUrl}/user/${id}`)
+  }
+
   getUserCriteria(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/user/criteria/${id}`)
   }
@@ -101,9 +105,9 @@ export class ApiService {
 
 
 
-  getUserById(id: number): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + id)
-  }
+  // getUserById(id: number): Observable<ApiResponse> {
+  //   return this.http.get<ApiResponse>(this.baseUrl + id)
+  // }
 
   createUser(user: User): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl, user)
