@@ -41,6 +41,9 @@ export class UserCriteriaExternalComponent implements OnInit {
           element.data_type === this.criteriaDataTypes.BTHYR) {
           this.values[element.criteria_type_id] = element.num_value
         }
+        if (element.data_type === this.criteriaDataTypes.MLTVAL) {
+          this.values[element.criteria_type_id][element.criteria_value_id] = true
+        }
       })
       console.log('user criteria', data)
       console.log('display values', this.values)
