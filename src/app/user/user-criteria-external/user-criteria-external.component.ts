@@ -15,7 +15,7 @@ export class UserCriteriaExternalComponent implements OnInit {
   criteria: CriteriaType[]
   userId: string
   values: any = {}
-  enteredPIN = ''
+  pinValidated = false
 
   criteriaDataTypes = {
     SNGVAL: 'f5463324-65dc-4e47-9076-481105022754',
@@ -94,17 +94,17 @@ export class UserCriteriaExternalComponent implements OnInit {
     return range(1950, currentYear - 18)
   }
 
-  async checkPIN() {
+  async checkPIN(enteredPin) {
     const user = await this.apiService.getUserById(this.userId).toPromise()
     const pin = user.pin.join('').replace(/ /g, '')
-    return pin === this.enteredPIN
+    return pin === enteredPin
   }
 
   async sendValues() {
-    if (!(await this.checkPIN())) {
-      this.toastr.error(`Please, enter the correct 4 digit PIN`)
-      return
-    }
+    // if (!(await this.checkPIN())) {
+    //   this.toastr.error(`Please, enter the correct 4 digit PIN`)
+    //   return
+    // }
     console.log('values to send', this.values)
     const processedValues = Object.keys(this.values).map(criteriaId => ({
       criteria: this.criteria.find(x => x.id === criteriaId),
@@ -118,7 +118,12 @@ export class UserCriteriaExternalComponent implements OnInit {
     })
   }
 
-  onCodeCompleted($event) {
-    this.enteredPIN = $event
+  async onCodeCompleted($event) {
+    if (!(await this.checkPIN($event))) {
+      this.toastr.error(`Please, enter the correct 4 digit PIN`)
+      setTimeout(() => window.location.reload(false), 1000)
+      return
+    }
+    this.pinValidated = true
   }
 }

@@ -7,10 +7,12 @@
     <code-input [isCodeHidden]="false"
       [isNonDigitsCode]="false"
       [codeLength]="4"
-      (codeCompleted)="onCodeCompleted($event)">
+      (codeCompleted)="onCodeCompleted($event)"
+      >
     </code-input>
   </div>
 
+  <div *ngIf="this.pinValidated">
   <div *ngFor="let item of criteria" >
 
     <div *ngIf="item.data_type === criteriaDataTypes.SNGVAL" class="form-entry--inline margin-top-2">
@@ -56,5 +58,5 @@
     Save values
     <i class="glyphicon glyphicon-ok mr-5"></i>
   </a>
-
+</div>
 </div>
